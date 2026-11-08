@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<rss version="2.0" 
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" 
+     xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+     xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <atom:link href="https://mgjosea.github.io/ia-sin-filtro-podcast/feed.xml" rel="self" type="application/rss+xml"/>
     <title>IA Sin Filtro</title>
     <link>https://mgjosea.github.io/ia-sin-filtro-podcast/</link>
     <language>es-ES</language>
     <copyright>© 2026 IA Sin Filtro</copyright>
+    <managingEditor>mgjosea@gmail.com (José)</managingEditor>
+    <webMaster>mgjosea@gmail.com (José)</webMaster>
     <description>IA Sin Filtro es tu dosis semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes, explicada de forma directa, rigurosa y sin tecnicismos innecesarios. Cada jueves, una píldora pedagógica escalonada para entender cómo la IA transforma el trabajo, la sociedad y el futuro.</description>
     <itunes:type>episodic</itunes:type>
     <itunes:summary>Píldoras semanales de 5 minutos sobre Inteligencia Artificial sin tecnicismos ni filtros. Una explicación clara y directa para entender cómo la IA está transformando nuestro mundo.</itunes:summary>
@@ -20,5 +25,24 @@
     </itunes:category>
     <itunes:category text="Education"/>
     <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
+    <image>
+      <url>https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg</url>
+      <title>IA Sin Filtro</title>
+      <link>https://mgjosea.github.io/ia-sin-filtro-podcast/</link>
+    </image>
+    <item>
+      <title>Tráiler Oficial: Presentación de IA Sin Filtro</title>
+      <itunes:title>Tráiler Oficial: Presentación de IA Sin Filtro</itunes:title>
+      <itunes:episodeType>trailer</itunes:episodeType>
+      <description><![CDATA[Bienvenidos a IA Sin Filtro, tu píldora semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes sin tecnicismos ni filtros. Conducido por José. Escucha la sintonía oficial del programa ("Mente Sintética") y el manifiesto divulgativo de la primera temporada.]]></description>
+      <itunes:summary>Bienvenidos a IA Sin Filtro, tu píldora semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes sin tecnicismos ni filtros. Conducido por José.</itunes:summary>
+      <pubDate>Sun, 08 Nov 2026 18:00:00 +0100</pubDate>
+      <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/trailer.mp3" length="2400756" type="audio/mpeg"/>
+      <guid isPermaLink="false">ia-sin-filtro-trailer</guid>
+      <itunes:duration>02:30</itunes:duration>
+      <itunes:author>José</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
+    </item>
   </channel>
 </rss>
