@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <atom:link href="https://mgjosea.github.io/ia-sin-filtro-podcast/feed.xml" rel="self" type="application/rss+xml"/>
+    <title>IA Sin Filtro</title>
+    <link>https://mgjosea.github.io/ia-sin-filtro-podcast/</link>
+    <language>es-ES</language>
+    <copyright>© 2026 IA Sin Filtro</copyright>
+    <description>IA Sin Filtro es tu dosis semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes, explicada de forma directa, rigurosa y sin tecnicismos innecesarios. Cada jueves, una píldora pedagógica escalonada para entender cómo la IA transforma el trabajo, la sociedad y el futuro.</description>
+    <itunes:type>episodic</itunes:type>
+    <itunes:summary>Píldoras semanales de 5 minutos sobre Inteligencia Artificial sin tecnicismos ni filtros. Una explicación clara y directa para entender cómo la IA está transformando nuestro mundo.</itunes:summary>
+    <itunes:author>José</itunes:author>
+    <itunes:owner>
+      <itunes:name>José</itunes:name>
+      <itunes:email>mgjosea@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:category text="Technology">
+      <itunes:category text="Artificial Intelligence"/>
+    </itunes:category>
+    <itunes:category text="Education"/>
+    <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
+  </channel>
+</rss>

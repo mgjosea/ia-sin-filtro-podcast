@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA Sin Filtro — Podcast de Inteligencia Artificial</title>
+  <meta name="description" content="Píldoras semanales de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes, sin tecnicismos ni filtros.">
+  <link rel="alternate" type="application/rss+xml" title="IA Sin Filtro RSS" href="feed.xml">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.3);
+      --border: #1e293b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      flex: 1;
+    }
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .cover-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .cover-img {
+      width: 260px;
+      height: 260px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px var(--accent-glow), 0 0 0 1px var(--border);
+      object-fit: cover;
+      background-color: #1e293b;
+    }
+    .badge-pill {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff 30%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.tagline {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin-bottom: 28px;
+    }
+    .platform-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid var(--border);
+    }
+    .btn-rss {
+      background: #f97316;
+      color: #ffffff;
+      border-color: #ea580c;
+    }
+    .btn-spotify {
+      background: #1ed760;
+      color: #000000;
+      border-color: #16a34a;
+    }
+    .btn-apple {
+      background: #a855f7;
+      color: #ffffff;
+      border-color: #9333ea;
+    }
+    .btn-ivoox {
+      background: #f43f5e;
+      color: #ffffff;
+      border-color: #e11d48;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+    .rss-copy-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto 48px auto;
+    }
+    .rss-copy-box code {
+      font-size: 13px;
+      color: var(--accent);
+      word-break: break-all;
+    }
+    .copy-btn {
+      background: var(--border);
+      color: var(--text-main);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: 12px;
+      white-space: nowrap;
+    }
+    .copy-btn:hover { background: #334155; }
+    
+    .seasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .season-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: border-color 0.2s ease;
+    }
+    .season-card:hover { border-color: var(--accent); }
+    .season-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+    .season-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      color: #64748b;
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="cover-wrapper">
+        <img src="cover.jpg" alt="IA Sin Filtro Cover" class="cover-img" onerror="this.src='https://placehold.co/600x600/0b132b/38bdf8?text=IA+SIN+FILTRO'">
+      </div>
+      <span class="badge-pill">🎙️ Podcast Semanal • 5 Minutos</span>
+      <h1>IA Sin Filtro</h1>
+      <p class="tagline">
+        Explicaciones directas, rigurosas y sin tecnicismos sobre Inteligencia Artificial y tecnologías emergentes. Cada jueves, una dosis de aprendizaje para entender el presente y futuro digital.
+      </p>
+
+      <div class="platform-buttons">
+        <a href="feed.xml" class="btn btn-rss" target="_blank">📡 RSS Feed</a>
+        <a href="https://open.spotify.com" class="btn btn-spotify" target="_blank">🟢 Spotify</a>
+        <a href="https://podcasts.apple.com" class="btn btn-apple" target="_blank">🟣 Apple Podcasts</a>
+        <a href="https://ivoox.com" class="btn btn-ivoox" target="_blank">🟠 iVoox</a>
+      </div>
+
+      <div class="rss-copy-box">
+        <code id="feedUrl">https://mgjosea.github.io/ia-sin-filtro-podcast/feed.xml</code>
+        <button class="copy-btn" onclick="copyFeed()">Copiar Feed</button>
+      </div>
+    </header>
+
+    <section>
+      <h2 style="font-size: 24px; margin-bottom: 16px; text-align: center;">Estructura por Temporadas (208 Episodios)</h2>
+      <div class="seasons-grid">
+        <div class="season-card">
+          <span style="font-size: 12px; color: var(--accent); font-weight: 700;">TEMPORADA 1 • NIVEL 0</span>
+          <h3>Los Cimientos</h3>
+          <p>52 episodios. Alfabetización digital desde cero: qué es la IA, historia, mitos, diferencia entre ANI y AGI, y aplicaciones prácticas en la vida diaria.</p>
+        </div>
+        <div class="season-card">
+          <span style="font-size: 12px; color: var(--accent); font-weight: 700;">TEMPORADA 2 • NIVEL 1</span>
+          <h3>Entendiendo a la Máquina</h3>
+          <p>52 episodios. Taller de Machine Learning, Big Data, tipos de entrenamiento (supervisado vs no supervisado), algoritmos y casos de uso en pymes.</p>
+        </div>
+        <div class="season-card">
+          <span style="font-size: 12px; color: var(--accent); font-weight: 700;">TEMPORADA 3 • NIVEL 2</span>
+          <h3>La Era Generativa y LLMs</h3>
+          <p>52 episodios. Modelos de lenguaje, redes neuronales, Transformers, técnicas RAG, visión artificial y automatización de procesos industriales.</p>
+        </div>
+        <div class="season-card">
+          <span style="font-size: 12px; color: var(--accent); font-weight: 700;">TEMPORADA 4 • NIVEL 3 Y 4</span>
+          <h3>Sistemas Autónomos y Futuro</h3>
+          <p>52 episodios. Agentes autónomos, robótica, IA en biotecnología, computación cuántica, gobernanza y el horizonte hacia la AGI.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>IA Sin Filtro © 2026. Conducido por José. Automatizado con n8n, Gemini, ElevenLabs y Auphonic.</p>
+  </footer>
+
+  <script>
+    function copyFeed() {
+      const url = document.getElementById('feedUrl').innerText;
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerText = '¡Copiado!';
+        setTimeout(() => btn.innerText = 'Copiar Feed', 2000);
+      });
+    }
+  </script>
+</body>
+</html>
