@@ -78,8 +78,7 @@ def create_or_load_feed(github_user="mgjosea", repo_name="ia-sin-filtro-podcast"
     itunes_explicit = ET.SubElement(channel, "itunes:explicit")
     itunes_explicit.text = "no"
     
-    cat1 = ET.SubElement(channel, "itunes:category", {"text": "Technology"})
-    ET.SubElement(cat1, "itunes:category", {"text": "Artificial Intelligence"})
+    ET.SubElement(channel, "itunes:category", {"text": "Technology"})
     
     cat2 = ET.SubElement(channel, "itunes:category", {"text": "Education"})
     

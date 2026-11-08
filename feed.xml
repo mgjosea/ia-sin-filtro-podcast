@@ -20,9 +20,7 @@
       <itunes:email>jose.iasinfiltro@gmail.com</itunes:email>
     </itunes:owner>
     <itunes:explicit>no</itunes:explicit>
-    <itunes:category text="Technology">
-      <itunes:category text="Artificial Intelligence"/>
-    </itunes:category>
+    <itunes:category text="Technology"/>
     <itunes:category text="Education"/>
     <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
     <image>
