@@ -42,5 +42,21 @@
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
     </item>
+    <item>
+      <title>¿Qué es realmente la Inteligencia Artificial?</title>
+      <itunes:title>¿Qué es realmente la Inteligencia Artificial?</itunes:title>
+      <itunes:episodeType>full</itunes:episodeType>
+      <description><![CDATA[¿Qué es realmente la Inteligencia Artificial? Concepto clave: Metáfora de la receta: de instrucciones fijas a deducción de patrones cotidianos. Píldora divulgativa de IA Sin Filtro, conducido por José con voz clonada y sintonía original 'Mente Sintética'.]]></description>
+      <itunes:summary>¿Qué es realmente la Inteligencia Artificial? Metáfora de la receta: de instrucciones fijas a deducción de patrones cotidianos. Conducido por José.</itunes:summary>
+      <pubDate>Mon, 09 Nov 2026 00:00:00 +0100</pubDate>
+      <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/episodes/Temporada_1_Episodio_1__Que_es_realmente_la_Inteligencia_Artificial_.mp3" length="13971957" type="audio/mpeg"/>
+      <guid isPermaLink="false">ia-sin-filtro-s1-e1</guid>
+      <itunes:duration>09:42</itunes:duration>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:author>José</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
+    </item>
   </channel>
 </rss>
