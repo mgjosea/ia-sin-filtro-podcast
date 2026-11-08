@@ -73,7 +73,7 @@ def create_or_load_feed(github_user="mgjosea", repo_name="ia-sin-filtro-podcast"
     owner_name = ET.SubElement(itunes_owner, "itunes:name")
     owner_name.text = "José"
     owner_email = ET.SubElement(itunes_owner, "itunes:email")
-    owner_email.text = "mgjosea@gmail.com"
+    owner_email.text = "jose.iasinfiltro@gmail.com"
     
     itunes_explicit = ET.SubElement(channel, "itunes:explicit")
     itunes_explicit.text = "no"
