@@ -67,11 +67,11 @@ def create_or_load_feed(github_user="mgjosea", repo_name="ia-sin-filtro-podcast"
     )
     
     itunes_author = ET.SubElement(channel, "itunes:author")
-    itunes_author.text = "José"
+    itunes_author.text = "José IA"
     
     itunes_owner = ET.SubElement(channel, "itunes:owner")
     owner_name = ET.SubElement(itunes_owner, "itunes:name")
-    owner_name.text = "José"
+    owner_name.text = "José IA"
     owner_email = ET.SubElement(itunes_owner, "itunes:email")
     owner_email.text = "jose.iasinfiltro@gmail.com"
     

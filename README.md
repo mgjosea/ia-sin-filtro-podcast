@@ -21,4 +21,4 @@ Repositorio público del podcast **"IA Sin Filtro"**, alojado mediante **GitHub 
 
 ---
 
-© 2026 IA Sin Filtro. Conducido por José. Todos los derechos reservados.
+© 2026 IA Sin Filtro. Conducido por José IA. Todos los derechos reservados.

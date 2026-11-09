@@ -11,14 +11,14 @@
     <language>es-ES</language>
     <copyright>© 2026 IA Sin Filtro</copyright>
     <lastBuildDate>Mon, 09 Nov 2026 01:25:00 +0000</lastBuildDate>
-    <managingEditor>jose.iasinfiltro@gmail.com (José)</managingEditor>
-    <webMaster>jose.iasinfiltro@gmail.com (José)</webMaster>
+    <managingEditor>jose.iasinfiltro@gmail.com (José IA)</managingEditor>
+    <webMaster>jose.iasinfiltro@gmail.com (José IA)</webMaster>
     <description>IA Sin Filtro es tu dosis semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes, explicada de forma directa, rigurosa y sin tecnicismos innecesarios. Cada jueves, una píldora pedagógica escalonada para entender cómo la IA transforma el trabajo, la sociedad y el futuro.</description>
     <itunes:type>episodic</itunes:type>
     <itunes:summary>Píldoras semanales de 5 minutos sobre Inteligencia Artificial sin tecnicismos ni filtros. Una explicación clara y directa para entender cómo la IA está transformando nuestro mundo.</itunes:summary>
-    <itunes:author>José</itunes:author>
+    <itunes:author>José IA</itunes:author>
     <itunes:owner>
-      <itunes:name>José</itunes:name>
+      <itunes:name>José IA</itunes:name>
       <itunes:email>jose.iasinfiltro@gmail.com</itunes:email>
     </itunes:owner>
     <itunes:explicit>no</itunes:explicit>
@@ -34,13 +34,13 @@
       <title>Tráiler Oficial: Presentación de IA Sin Filtro</title>
       <itunes:title>Tráiler Oficial: Presentación de IA Sin Filtro</itunes:title>
       <itunes:episodeType>trailer</itunes:episodeType>
-      <description><![CDATA[Bienvenidos a IA Sin Filtro, tu píldora semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes sin tecnicismos ni filtros. Conducido por José. Escucha la sintonía oficial del programa ("Mente Sintética") y el manifiesto divulgativo de la primera temporada.]]></description>
-      <itunes:summary>Bienvenidos a IA Sin Filtro, tu píldora semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes sin tecnicismos ni filtros. Conducido por José.</itunes:summary>
+      <description><![CDATA[Bienvenidos a IA Sin Filtro, tu píldora semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes sin tecnicismos ni filtros. Conducido por José IA. Escucha la sintonía oficial del programa ("Mente Sintética") y el manifiesto divulgativo de la primera temporada.]]></description>
+      <itunes:summary>Bienvenidos a IA Sin Filtro, tu píldora semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes sin tecnicismos ni filtros. Conducido por José IA.</itunes:summary>
       <pubDate>Sun, 08 Nov 2026 18:00:00 +0100</pubDate>
       <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/trailer.mp3" length="2400756" type="audio/mpeg"/>
       <guid isPermaLink="false">ia-sin-filtro-trailer</guid>
       <itunes:duration>02:30</itunes:duration>
-      <itunes:author>José</itunes:author>
+      <itunes:author>José IA</itunes:author>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
     </item>
@@ -48,15 +48,15 @@
       <title>¿Qué es realmente la Inteligencia Artificial?</title>
       <itunes:title>¿Qué es realmente la Inteligencia Artificial?</itunes:title>
       <itunes:episodeType>full</itunes:episodeType>
-      <description><![CDATA[¿Qué es realmente la Inteligencia Artificial? Concepto clave: Metáfora de la receta: de instrucciones fijas a deducción de patrones cotidianos. Píldora divulgativa de IA Sin Filtro de 5 minutos, conducido por José con voz clonada y sintonía original 'Mente Sintética'.]]></description>
-      <itunes:summary>¿Qué es realmente la Inteligencia Artificial? Metáfora de la receta: de instrucciones fijas a deducción de patrones cotidianos. Píldora de 5 minutos conducida por José.</itunes:summary>
+      <description><![CDATA[¿Qué es realmente la Inteligencia Artificial? Concepto clave: Metáfora de la receta: de instrucciones fijas a deducción de patrones cotidianos. Píldora divulgativa de IA Sin Filtro de 5 minutos, conducido por José IA con voz clonada y sintonía original 'Mente Sintética'.]]></description>
+      <itunes:summary>¿Qué es realmente la Inteligencia Artificial? Metáfora de la receta: de instrucciones fijas a deducción de patrones cotidianos. Píldora de 5 minutos conducida por José IA.</itunes:summary>
       <pubDate>Mon, 09 Nov 2026 00:00:00 +0100</pubDate>
       <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/episodes/Temporada_1_Episodio_1__Que_es_realmente_la_Inteligencia_Artificial_.mp3?v=6" length="7176611" type="audio/mpeg"/>
       <guid isPermaLink="false">ia-sin-filtro-s1-e1-v2</guid>
       <itunes:duration>04:58</itunes:duration>
       <itunes:season>1</itunes:season>
       <itunes:episode>1</itunes:episode>
-      <itunes:author>José</itunes:author>
+      <itunes:author>José IA</itunes:author>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
     </item>
@@ -64,15 +64,15 @@
       <title>Breve historia de la IA: Del sueño de Turing a nuestro bolsillo</title>
       <itunes:title>Breve historia de la IA: Del sueño de Turing a nuestro bolsillo</itunes:title>
       <itunes:episodeType>full</itunes:episodeType>
-      <description><![CDATA[Breve historia de la IA: Del sueño de Turing a nuestro bolsillo. Descubre Dartmouth, los inviernos de la IA y cómo 70 años de investigación acabaron viviendo dentro de tu teléfono móvil. Píldora de 5 minutos conducida por Jose IA.]]></description>
-      <itunes:summary>Breve historia de la IA: Del sueño de Turing a nuestro bolsillo. Descubre Dartmouth, los inviernos de la IA y cómo 70 años de investigación acabaron viviendo dentro de tu teléfono móvil. Conducido por Jose IA.</itunes:summary>
+      <description><![CDATA[Breve historia de la IA: Del sueño de Turing a nuestro bolsillo. Descubre Dartmouth, los inviernos de la IA y cómo 70 años de investigación acabaron viviendo dentro de tu teléfono móvil. Píldora de 5 minutos conducida por José IA.]]></description>
+      <itunes:summary>Breve historia de la IA: Del sueño de Turing a nuestro bolsillo. Descubre Dartmouth, los inviernos de la IA y cómo 70 años de investigación acabaron viviendo dentro de tu teléfono móvil. Conducido por José IA.</itunes:summary>
       <pubDate>Mon, 09 Nov 2026 10:45:00 +0100</pubDate>
       <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/episodes/Temporada_1_Episodio_2_Breve_historia_de_la_IA_Del_sueno_de_Turing_a_nuestro_bolsillo.mp3" length="6547164" type="audio/mpeg"/>
       <guid isPermaLink="false">ia-sin-filtro-s1-e2</guid>
       <itunes:duration>04:32</itunes:duration>
       <itunes:season>1</itunes:season>
       <itunes:episode>2</itunes:episode>
-      <itunes:author>Jose IA</itunes:author>
+      <itunes:author>José IA</itunes:author>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
     </item>
