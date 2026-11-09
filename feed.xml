@@ -60,5 +60,21 @@
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
     </item>
+    <item>
+      <title>Breve historia de la IA: Del sueño de Turing a nuestro bolsillo</title>
+      <itunes:title>Breve historia de la IA: Del sueño de Turing a nuestro bolsillo</itunes:title>
+      <itunes:episodeType>full</itunes:episodeType>
+      <description><![CDATA[Breve historia de la IA: Del sueño de Turing a nuestro bolsillo. Descubre Dartmouth, los inviernos de la IA y cómo 70 años de investigación acabaron viviendo dentro de tu teléfono móvil. Píldora de 5 minutos conducida por Jose IA.]]></description>
+      <itunes:summary>Breve historia de la IA: Del sueño de Turing a nuestro bolsillo. Descubre Dartmouth, los inviernos de la IA y cómo 70 años de investigación acabaron viviendo dentro de tu teléfono móvil. Conducido por Jose IA.</itunes:summary>
+      <pubDate>Mon, 09 Nov 2026 10:45:00 +0100</pubDate>
+      <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/episodes/Temporada_1_Episodio_2_Breve_historia_de_la_IA_Del_sueno_de_Turing_a_nuestro_bolsillo.mp3" length="6547164" type="audio/mpeg"/>
+      <guid isPermaLink="false">ia-sin-filtro-s1-e2</guid>
+      <itunes:duration>04:32</itunes:duration>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:author>Jose IA</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
+    </item>
   </channel>
 </rss>
