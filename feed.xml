@@ -10,7 +10,7 @@
     <link>https://mgjosea.github.io/ia-sin-filtro-podcast/</link>
     <language>es-ES</language>
     <copyright>© 2026 IA Sin Filtro</copyright>
-    <lastBuildDate>Mon, 09 Nov 2026 00:46:59 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 01:07:23 +0000</lastBuildDate>
     <managingEditor>jose.iasinfiltro@gmail.com (José)</managingEditor>
     <webMaster>jose.iasinfiltro@gmail.com (José)</webMaster>
     <description>IA Sin Filtro es tu dosis semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes, explicada de forma directa, rigurosa y sin tecnicismos innecesarios. Cada jueves, una píldora pedagógica escalonada para entender cómo la IA transforma el trabajo, la sociedad y el futuro.</description>
@@ -51,9 +51,9 @@
       <description><![CDATA[¿Qué es realmente la Inteligencia Artificial? Concepto clave: Metáfora de la receta: de instrucciones fijas a deducción de patrones cotidianos. Píldora divulgativa de IA Sin Filtro, conducido por José con voz clonada y sintonía original 'Mente Sintética'.]]></description>
       <itunes:summary>¿Qué es realmente la Inteligencia Artificial? Metáfora de la receta: de instrucciones fijas a deducción de patrones cotidianos. Conducido por José.</itunes:summary>
       <pubDate>Mon, 09 Nov 2026 00:00:00 +0100</pubDate>
-      <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/episodes/Temporada_1_Episodio_1__Que_es_realmente_la_Inteligencia_Artificial_.mp3?v=4" length="6136881" type="audio/mpeg"/>
+      <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/episodes/Temporada_1_Episodio_1__Que_es_realmente_la_Inteligencia_Artificial_.mp3?v=5" length="5831827" type="audio/mpeg"/>
       <guid isPermaLink="false">ia-sin-filtro-s1-e1</guid>
-      <itunes:duration>04:15</itunes:duration>
+      <itunes:duration>04:02</itunes:duration>
       <itunes:season>1</itunes:season>
       <itunes:episode>1</itunes:episode>
       <itunes:author>José</itunes:author>
