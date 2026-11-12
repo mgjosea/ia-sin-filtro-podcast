@@ -10,7 +10,7 @@
     <link>https://mgjosea.github.io/ia-sin-filtro-podcast/</link>
     <language>es-ES</language>
     <copyright>© 2026 IA Sin Filtro</copyright>
-    <lastBuildDate>Mon, 09 Nov 2026 01:25:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 16:10:41 GMT</lastBuildDate>
     <managingEditor>jose.iasinfiltro@gmail.com (José IA)</managingEditor>
     <webMaster>jose.iasinfiltro@gmail.com (José IA)</webMaster>
     <description>IA Sin Filtro es tu dosis semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes, explicada de forma directa, rigurosa y sin tecnicismos innecesarios. Cada jueves, una píldora pedagógica escalonada para entender cómo la IA transforma el trabajo, la sociedad y el futuro.</description>
@@ -72,6 +72,22 @@
       <itunes:duration>05:25</itunes:duration>
       <itunes:season>1</itunes:season>
       <itunes:episode>2</itunes:episode>
+      <itunes:author>José IA</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
+    </item>
+    <item>
+      <title>Mitos vs. Realidades de la Inteligencia Artificial</title>
+      <itunes:title>Mitos vs. Realidades de la Inteligencia Artificial</itunes:title>
+      <itunes:episodeType>full</itunes:episodeType>
+      <description><![CDATA[Mitos vs. Realidades de la Inteligencia Artificial. Concepto clave: Separando la ciencia ficción de los algoritmos reales que usamos cada día. Píldora divulgativa de 5 minutos de IA Sin Filtro, conducido por José IA.]]></description>
+      <itunes:summary>Mitos vs. Realidades de la Inteligencia Artificial. Concepto clave: Separando la ciencia ficción de los algoritmos reales que usamos cada día. Píldora divulgativa de 5 minutos de IA Sin Filtro, conducido por José IA.</itunes:summary>
+      <pubDate>Thu, 12 Nov 2026 16:10:41 GMT</pubDate>
+      <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/episodes/Temporada_1_Episodio_3_Mitos_vs_Realidades_de_la_Inteligencia_Artificial.mp3" length="5242880" type="audio/mpeg"/>
+      <guid isPermaLink="false">ia-sin-filtro-s1-e3</guid>
+      <itunes:duration>05:30</itunes:duration>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>3</itunes:episode>
       <itunes:author>José IA</itunes:author>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
