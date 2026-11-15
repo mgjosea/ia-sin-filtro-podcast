@@ -12,6 +12,16 @@ Repositorio público del podcast **"IA Sin Filtro"**, alojado mediante **GitHub 
 
 ---
 
+## 📺 Episodios Publicados & YouTube Shorts
+
+| Episodio | Título | Vídeo 1080p | YouTube Short (45s) |
+| :---: | :--- | :---: | :---: |
+| **01** | ¿Qué es realmente la Inteligencia Artificial? | [Ver en YouTube](https://youtu.be/pML8hddbp48) | [Ver Short](https://youtube.com/shorts/_Vaze1GxP78) |
+| **02** | Breve historia de la IA: Del sueño de Turing a nuestro bolsillo | [Ver en YouTube](https://youtu.be/teKFPxBZ0MY) | [Ver Short](https://youtube.com/shorts/5QFpT_E-INc) |
+| **03** | Mitos vs. Realidades de la Inteligencia Artificial | [Ver en YouTube](https://youtu.be/5XNrgmXdGKE) | [Ver Short](https://youtube.com/shorts/Mguy_63KV3s) |
+
+---
+
 ## 🛠️ Cómo Funciona la Automatización (0€ de Coste)
 
 1. **Generación & Masterización:** Todos los jueves a las 09:00 AM, **n8n** orquesta la locución mediante **ElevenLabs** y la masterización profesional con **Auphonic** (-16 LUFS, intro y outro con música de sintetizador).
