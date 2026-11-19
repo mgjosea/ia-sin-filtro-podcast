@@ -1,0 +1,105 @@
+{
+  "name": "IA Sin Filtro — Workflow 2: Fase 4 Blindada (Publicación y Redes)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ia-sin-filtro-fase4-publish",
+        "options": {}
+      },
+      "id": "webhook-fase4",
+      "name": "Webhook Trigger Aprobación",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [180, 300]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * 4"
+            }
+          ]
+        }
+      },
+      "id": "cron-jueves",
+      "name": "Cron Jueves 09:00 CET (Fallback Automático)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [180, 120]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Normalizar payload entrante desde Webhook o lectura de live-status\nconst input = $input.first() ? $input.first().json : {};\nconst query = input.query || {};\nconst body = input.body || {};\n\nconst episode = Number(body.episode || query.episode || 4);\nconst season = Number(body.season || query.season || 1);\nconst title = body.title || query.title || 'IA Estrecha (ANI) vs. IA General (AGI)';\nconst concept = body.concept || query.concept || 'Diferencia entre algoritmos especializados de hoy y la hipotética inteligencia humana artificial';\nconst audioFilename = body.audio || query.audio || 'Temporada_1_Episodio_4_IA_Estrecha_ANI_vs_IA_General_AGI.mp3';\nconst audioBytes = Number(body.bytes || query.bytes || 11254849);\nconst duration = body.duration || query.duration || '05:51';\nconst ytVideoUrl = body.yt_video || query.yt_video || 'https://www.youtube.com/@jose.iasinfiltro';\nconst ytShortUrl = body.yt_short || query.yt_short || 'https://ia-sin-filtro.duckdns.org/episodes/shorts_ep4_youtube.mp4';\n\nreturn [{\n  json: {\n    season,\n    episode,\n    title,\n    concept,\n    audioFilename,\n    audioBytes,\n    duration,\n    ytVideoUrl,\n    ytShortUrl,\n    tweetText: `🎙️ ¡Estrenamos nuevo episodio de #IASinFiltro!\\n\\nEpisodio ${episode}: \"${title}\"\\n\\n¿Por qué el algoritmo de Spotify no puede prepararte la cena? Desarmamos el mito de la AGI frente a la IA especializada de hoy.\\n\\n🎧 Escúchalo en Spotify, Apple, iVoox y YouTube:\\n👉 https://mgjosea.github.io/ia-sin-filtro-podcast/`\n  }\n}];"
+      },
+      "id": "code-normalizer",
+      "name": "Normalizar Datos Aprobados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [440, 220]
+    },
+    {
+      "parameters": {
+        "command": "=python3 automation/publish_episode.py --season {{ $json.season }} --episode {{ $json.episode }} --title \"{{ $json.title }}\" --concept \"{{ $json.concept }}\" --audio \"{{ $json.audioFilename }}\" --bytes {{ $json.audioBytes }} --duration \"{{ $json.duration }}\" --yt-video \"{{ $json.ytVideoUrl }}\" --yt-short \"{{ $json.ytShortUrl }}\""
+      },
+      "id": "exec-publish",
+      "name": "Actualizar feed.xml, Landing y README",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [680, 220]
+    },
+    {
+      "parameters": {
+        "command": "git add episodes/ feed.xml index.html README.md && git commit -m \"feat(ep4): publicar Episodio 4 (IA Estrecha vs AGI) en feed RSS y web player\" && git push origin main"
+      },
+      "id": "git-push",
+      "name": "Git Push a GitHub Pages",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [900, 220]
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.tweetText }}"
+      },
+      "id": "twitter-post",
+      "name": "Publicar en 𝕏 (@IAsinfiltr0)",
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [1120, 220]
+    },
+    {
+      "parameters": {
+        "chatId": "TU_TELEGRAM_CHAT_ID",
+        "text": "=🚀 *¡IA Sin Filtro — Episodio {{ $json.episode }} Publicado con Éxito!*\n\n*Título:* {{ $json.title }}\n*Plataformas:* RSS, Spotify, Apple Podcasts, iVoox y Amazon Music.\n*Redes:* Tweet emitido en @IAsinfiltr0.\n\n🌐 Landing: https://mgjosea.github.io/ia-sin-filtro-podcast/"
+      },
+      "id": "notif-success",
+      "name": "Confirmación Final (Telegram / Email)",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [1340, 220]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger Aprobación": {
+      "main": [[{ "node": "Normalizar Datos Aprobados", "type": "main", "index": 0 }]]
+    },
+    "Cron Jueves 09:00 CET (Fallback Automático)": {
+      "main": [[{ "node": "Normalizar Datos Aprobados", "type": "main", "index": 0 }]]
+    },
+    "Normalizar Datos Aprobados": {
+      "main": [[{ "node": "Actualizar feed.xml, Landing y README", "type": "main", "index": 0 }]]
+    },
+    "Actualizar feed.xml, Landing y README": {
+      "main": [[{ "node": "Git Push a GitHub Pages", "type": "main", "index": 0 }]]
+    },
+    "Git Push a GitHub Pages": {
+      "main": [[{ "node": "Publicar en 𝕏 (@IAsinfiltr0)", "type": "main", "index": 0 }]]
+    },
+    "Publicar en 𝕏 (@IAsinfiltr0)": {
+      "main": [[{ "node": "Confirmación Final (Telegram / Email)", "type": "main", "index": 0 }]]
+    }
+  }
+}

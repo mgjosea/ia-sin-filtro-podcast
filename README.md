@@ -19,6 +19,7 @@ Repositorio público del podcast **"IA Sin Filtro"**, alojado mediante **GitHub 
 | **01** | ¿Qué es realmente la Inteligencia Artificial? | [Ver en YouTube](https://youtu.be/pML8hddbp48) | [Ver Short](https://youtube.com/shorts/_Vaze1GxP78) |
 | **02** | Breve historia de la IA: Del sueño de Turing a nuestro bolsillo | [Ver en YouTube](https://youtu.be/teKFPxBZ0MY) | [Ver Short](https://youtube.com/shorts/5QFpT_E-INc) |
 | **03** | Mitos vs. Realidades de la Inteligencia Artificial | [Ver en YouTube](https://youtu.be/5XNrgmXdGKE) | [Ver Short](https://youtube.com/shorts/Mguy_63KV3s) |
+| **04** | IA Estrecha (ANI) vs. IA General (AGI) | [Ver en YouTube](https://www.youtube.com/@jose.iasinfiltro) | [Ver Short](https://ia-sin-filtro.duckdns.org/episodes/shorts_ep4_youtube.mp4) |
 
 ---
 

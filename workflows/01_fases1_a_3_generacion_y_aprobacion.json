@@ -1,0 +1,105 @@
+{
+  "name": "IA Sin Filtro — Workflow 1: Producción y Aprobación (Fases 1 a 3)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * 1"
+            }
+          ]
+        }
+      },
+      "id": "cron-lunes",
+      "name": "Cron Semanal (Lunes 08:00 CET)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [180, 260]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash",
+        "prompt": "Genera el guion divulgativo para el nuevo episodio de 'IA Sin Filtro' (5 minutos, locución por José IA, tono conversacional sin tecnicismos complejos, pausas marcadas con [pause])."
+      },
+      "id": "llm-guion",
+      "name": "Fase 1: Generación de Guion (Gemini)",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [420, 260]
+    },
+    {
+      "parameters": {
+        "url": "https://api.elevenlabs.io/v1/text-to-speech/voice-id",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "={{ $env.ELEVENLABS_API_KEY }}"
+            }
+          ]
+        }
+      },
+      "id": "elevenlabs-locucion",
+      "name": "Fase 3: Locución ElevenLabs",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [660, 260]
+    },
+    {
+      "parameters": {
+        "command": "ffmpeg -i input.mp3 -af 'loudnorm=I=-16:TP=-1.5:LRA=11' -b:a 256k output_master.mp3"
+      },
+      "id": "ffmpeg-master",
+      "name": "Fase 3: Masterizado EBU R128 (-16 LUFS)",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [880, 260]
+    },
+    {
+      "parameters": {
+        "chatId": "TU_TELEGRAM_CHAT_ID",
+        "text": "=🎙️ *IA Sin Filtro — Solicitud de Aprobación*\n\n*Episodio:* {{ $json.episode }} (Temporada {{ $json.season }})\n*Título:* {{ $json.title }}\n*Audio Master:* -16.0 LUFS (OK)\n\n¿Deseas autorizar la publicación multicanal (Fase 4)?",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": [
+                {
+                  "text": "✅ Aprobar y Publicar (Fase 4)",
+                  "url": "https://ia-sin-filtro.duckdns.org/webhook/ia-sin-filtro-fase4-publish?episode={{ $json.episode }}&season={{ $json.season }}"
+                },
+                {
+                  "text": "❌ Rechazar",
+                  "url": "https://ia-sin-filtro.duckdns.org/dashboard"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "id": "notif-aprobacion",
+      "name": "Enviar Enlace de Aprobación (Telegram / Dashboard)",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [1120, 260]
+    }
+  ],
+  "connections": {
+    "Cron Semanal (Lunes 08:00 CET)": {
+      "main": [[{ "node": "Fase 1: Generación de Guion (Gemini)", "type": "main", "index": 0 }]]
+    },
+    "Fase 1: Generación de Guion (Gemini)": {
+      "main": [[{ "node": "Fase 3: Locución ElevenLabs", "type": "main", "index": 0 }]]
+    },
+    "Fase 3: Locución ElevenLabs": {
+      "main": [[{ "node": "Fase 3: Masterizado EBU R128 (-16 LUFS)", "type": "main", "index": 0 }]]
+    },
+    "Fase 3: Masterizado EBU R128 (-16 LUFS)": {
+      "main": [[{ "node": "Enviar Enlace de Aprobación (Telegram / Dashboard)", "type": "main", "index": 0 }]]
+    }
+  }
+}

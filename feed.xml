@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" 
-     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" 
-     xmlns:content="http://purl.org/rss/1.0/modules/content/" 
-     xmlns:atom="http://www.w3.org/2005/Atom">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
   <channel>
     <atom:link href="https://mgjosea.github.io/ia-sin-filtro-podcast/feed.xml" rel="self" type="application/rss+xml"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
@@ -10,7 +7,7 @@
     <link>https://mgjosea.github.io/ia-sin-filtro-podcast/</link>
     <language>es-ES</language>
     <copyright>© 2026 IA Sin Filtro</copyright>
-    <lastBuildDate>Thu, 12 Nov 2026 16:10:41 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 08:54:06 +0000</lastBuildDate>
     <managingEditor>jose.iasinfiltro@gmail.com (José IA)</managingEditor>
     <webMaster>jose.iasinfiltro@gmail.com (José IA)</webMaster>
     <description>IA Sin Filtro es tu dosis semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes, explicada de forma directa, rigurosa y sin tecnicismos innecesarios. Cada jueves, una píldora pedagógica escalonada para entender cómo la IA transforma el trabajo, la sociedad y el futuro.</description>
@@ -34,7 +31,7 @@
       <title>Tráiler Oficial: Presentación de IA Sin Filtro</title>
       <itunes:title>Tráiler Oficial: Presentación de IA Sin Filtro</itunes:title>
       <itunes:episodeType>trailer</itunes:episodeType>
-      <description><![CDATA[Bienvenidos a IA Sin Filtro, tu píldora semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes sin tecnicismos ni filtros. Conducido por José IA. Escucha la sintonía oficial del programa ("Mente Sintética") y el manifiesto divulgativo de la primera temporada.]]></description>
+      <description>Bienvenidos a IA Sin Filtro, tu píldora semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes sin tecnicismos ni filtros. Conducido por José IA. Escucha la sintonía oficial del programa (&quot;Mente Sintética&quot;) y el manifiesto divulgativo de la primera temporada.</description>
       <itunes:summary>Bienvenidos a IA Sin Filtro, tu píldora semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes sin tecnicismos ni filtros. Conducido por José IA.</itunes:summary>
       <pubDate>Sun, 08 Nov 2026 18:00:00 +0100</pubDate>
       <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/trailer.mp3" length="2400756" type="audio/mpeg"/>
@@ -48,7 +45,7 @@
       <title>¿Qué es realmente la Inteligencia Artificial?</title>
       <itunes:title>¿Qué es realmente la Inteligencia Artificial?</itunes:title>
       <itunes:episodeType>full</itunes:episodeType>
-      <description><![CDATA[¿Qué es realmente la Inteligencia Artificial? Concepto clave: Metáfora de la receta: de instrucciones fijas a deducción de patrones cotidianos. Píldora divulgativa de IA Sin Filtro de 5 minutos, conducido por José IA con voz clonada y sintonía original 'Mente Sintética'.]]></description>
+      <description>¿Qué es realmente la Inteligencia Artificial? Concepto clave: Metáfora de la receta: de instrucciones fijas a deducción de patrones cotidianos. Píldora divulgativa de IA Sin Filtro de 5 minutos, conducido por José IA con voz clonada y sintonía original 'Mente Sintética'.</description>
       <itunes:summary>¿Qué es realmente la Inteligencia Artificial? Metáfora de la receta: de instrucciones fijas a deducción de patrones cotidianos. Píldora de 5 minutos conducida por José IA.</itunes:summary>
       <pubDate>Mon, 09 Nov 2026 00:00:00 +0100</pubDate>
       <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/episodes/Temporada_1_Episodio_1__Que_es_realmente_la_Inteligencia_Artificial_.mp3?v=11" length="7388516" type="audio/mpeg"/>
@@ -64,7 +61,7 @@
       <title>Breve historia de la IA: Del sueño de Turing a nuestro bolsillo</title>
       <itunes:title>Breve historia de la IA: Del sueño de Turing a nuestro bolsillo</itunes:title>
       <itunes:episodeType>full</itunes:episodeType>
-      <description><![CDATA[Breve historia de la IA: Del sueño de Turing a nuestro bolsillo. Descubre Dartmouth, los inviernos de la IA y cómo 70 años de investigación acabaron viviendo dentro de tu teléfono móvil. Píldora de 5 minutos conducida por José IA.]]></description>
+      <description>Breve historia de la IA: Del sueño de Turing a nuestro bolsillo. Descubre Dartmouth, los inviernos de la IA y cómo 70 años de investigación acabaron viviendo dentro de tu teléfono móvil. Píldora de 5 minutos conducida por José IA.</description>
       <itunes:summary>Breve historia de la IA: Del sueño de Turing a nuestro bolsillo. Descubre Dartmouth, los inviernos de la IA y cómo 70 años de investigación acabaron viviendo dentro de tu teléfono móvil. Conducido por José IA.</itunes:summary>
       <pubDate>Mon, 09 Nov 2026 10:45:00 +0100</pubDate>
       <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/episodes/Temporada_1_Episodio_2_Breve_historia_de_la_IA_Del_sueno_de_Turing_a_nuestro_bolsillo.mp3?v=11" length="7819223" type="audio/mpeg"/>
@@ -80,7 +77,7 @@
       <title>Mitos vs. Realidades de la Inteligencia Artificial</title>
       <itunes:title>Mitos vs. Realidades de la Inteligencia Artificial</itunes:title>
       <itunes:episodeType>full</itunes:episodeType>
-      <description><![CDATA[Mitos vs. Realidades de la Inteligencia Artificial. Concepto clave: Separando la ciencia ficción de los algoritmos reales que usamos cada día. Píldora divulgativa de 5 minutos de IA Sin Filtro, conducido por José IA.]]></description>
+      <description>Mitos vs. Realidades de la Inteligencia Artificial. Concepto clave: Separando la ciencia ficción de los algoritmos reales que usamos cada día. Píldora divulgativa de 5 minutos de IA Sin Filtro, conducido por José IA.</description>
       <itunes:summary>Mitos vs. Realidades de la Inteligencia Artificial. Concepto clave: Separando la ciencia ficción de los algoritmos reales que usamos cada día. Píldora divulgativa de 5 minutos de IA Sin Filtro, conducido por José IA.</itunes:summary>
       <pubDate>Thu, 12 Nov 2026 16:10:41 GMT</pubDate>
       <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/episodes/Temporada_1_Episodio_3_Mitos_vs_Realidades_de_la_Inteligencia_Artificial.mp3?v=3" length="9885613" type="audio/mpeg"/>
@@ -88,6 +85,22 @@
       <itunes:duration>05:08</itunes:duration>
       <itunes:season>1</itunes:season>
       <itunes:episode>3</itunes:episode>
+      <itunes:author>José IA</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
+    </item>
+    <item>
+      <title>IA Estrecha (ANI) vs. IA General (AGI)</title>
+      <itunes:title>IA Estrecha (ANI) vs. IA General (AGI)</itunes:title>
+      <itunes:episodeType>full</itunes:episodeType>
+      <description><![CDATA[IA Estrecha (ANI) vs. IA General (AGI). Concepto clave: Diferencia entre algoritmos especializados de hoy y la hipotética inteligencia humana artificial. Píldora pedagógica de 5 minutos conducida por José IA.]]></description>
+      <itunes:summary>IA Estrecha (ANI) vs. IA General (AGI). Concepto clave: Diferencia entre algoritmos especializados de hoy y la hipotética inteligencia humana artificial. Píldora pedagógica de 5 minutos conducida por José IA.</itunes:summary>
+      <pubDate>Thu, 19 Nov 2026 08:54:06 +0000</pubDate>
+      <enclosure url="https://mgjosea.github.io/ia-sin-filtro-podcast/episodes/Temporada_1_Episodio_4_IA_Estrecha_ANI_vs_IA_General_AGI.mp3?v=1" length="11254849" type="audio/mpeg"/>
+      <guid isPermaLink="false">ia-sin-filtro-s1-e4</guid>
+      <itunes:duration>05:51</itunes:duration>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>4</itunes:episode>
       <itunes:author>José IA</itunes:author>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
