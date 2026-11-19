@@ -1,105 +1,439 @@
 {
-  "name": "IA Sin Filtro — Workflow 2: Fase 4 Blindada (Publicación y Redes)",
+  "name": "IA Sin Filtro - Fase 4: Publicación Blindada y Distribución (Jueves)",
   "nodes": [
     {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "ia-sin-filtro-fase4-publish",
-        "options": {}
-      },
-      "id": "webhook-fase4",
-      "name": "Webhook Trigger Aprobación",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [180, 300]
+      "parameters": {},
+      "id": "node-manual-trigger-publicacion",
+      "name": "Al hacer clic en Probar Publicación",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        176,
+        224
+      ]
     },
     {
       "parameters": {
         "rule": {
           "interval": [
             {
-              "field": "cronExpression",
-              "expression": "0 9 * * 4"
+              "field": "weeks",
+              "triggerAtDay": [
+                "4"
+              ],
+              "triggerAtHour": 9
             }
           ]
         }
       },
-      "id": "cron-jueves",
-      "name": "Cron Jueves 09:00 CET (Fallback Automático)",
+      "id": "node-cron-jueves",
+      "name": "Cron (Jueves 09:00 AM)",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [180, 120]
+      "position": [
+        176,
+        416
+      ]
     },
     {
       "parameters": {
-        "jsCode": "// Normalizar payload entrante desde Webhook o lectura de live-status\nconst input = $input.first() ? $input.first().json : {};\nconst query = input.query || {};\nconst body = input.body || {};\n\nconst episode = Number(body.episode || query.episode || 4);\nconst season = Number(body.season || query.season || 1);\nconst title = body.title || query.title || 'IA Estrecha (ANI) vs. IA General (AGI)';\nconst concept = body.concept || query.concept || 'Diferencia entre algoritmos especializados de hoy y la hipotética inteligencia humana artificial';\nconst audioFilename = body.audio || query.audio || 'Temporada_1_Episodio_4_IA_Estrecha_ANI_vs_IA_General_AGI.mp3';\nconst audioBytes = Number(body.bytes || query.bytes || 11254849);\nconst duration = body.duration || query.duration || '05:51';\nconst ytVideoUrl = body.yt_video || query.yt_video || 'https://www.youtube.com/@jose.iasinfiltro';\nconst ytShortUrl = body.yt_short || query.yt_short || 'https://ia-sin-filtro.duckdns.org/episodes/shorts_ep4_youtube.mp4';\n\nreturn [{\n  json: {\n    season,\n    episode,\n    title,\n    concept,\n    audioFilename,\n    audioBytes,\n    duration,\n    ytVideoUrl,\n    ytShortUrl,\n    tweetText: `🎙️ ¡Estrenamos nuevo episodio de #IASinFiltro!\\n\\nEpisodio ${episode}: \"${title}\"\\n\\n¿Por qué el algoritmo de Spotify no puede prepararte la cena? Desarmamos el mito de la AGI frente a la IA especializada de hoy.\\n\\n🎧 Escúchalo en Spotify, Apple, iVoox y YouTube:\\n👉 https://mgjosea.github.io/ia-sin-filtro-podcast/`\n  }\n}];"
+        "jsCode": "return [\n  { json: { sheetName: \"Temporada 1 - Nivel 0\" } },\n  { json: { sheetName: \"Temporada 2 - Nivel 1\" } },\n  { json: { sheetName: \"Temporada 3 - Nivel 2\" } },\n  { json: { sheetName: \"Temporada 4 - Nivel 3 y 4\" } }\n];"
       },
-      "id": "code-normalizer",
-      "name": "Normalizar Datos Aprobados",
+      "id": "node-listar-temporadas-pub",
+      "name": "Listar Temporadas (Publicación)",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [440, 220]
+      "position": [
+        400,
+        416
+      ]
     },
     {
       "parameters": {
-        "command": "=python3 automation/publish_episode.py --season {{ $json.season }} --episode {{ $json.episode }} --title \"{{ $json.title }}\" --concept \"{{ $json.concept }}\" --audio \"{{ $json.audioFilename }}\" --bytes {{ $json.audioBytes }} --duration \"{{ $json.duration }}\" --yt-video \"{{ $json.ytVideoUrl }}\" --yt-short \"{{ $json.ytShortUrl }}\""
+        "authentication": "serviceAccount",
+        "documentId": {
+          "__rl": true,
+          "value": "1wWxnh9ZZVkH1-9b1oQcME8JlTDqX5XdH4koF96r51QY",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $json.sheetName }}",
+          "mode": "name"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Estado",
+              "lookupValue": "Aprobado"
+            }
+          ]
+        },
+        "options": {
+          "dataLocationOnSheet": {
+            "values": {
+              "rangeDefinition": "specifyRange",
+              "headerRow": 8,
+              "firstDataRow": 9
+            }
+          }
+        }
       },
-      "id": "exec-publish",
-      "name": "Actualizar feed.xml, Landing y README",
-      "type": "n8n-nodes-base.executeCommand",
+      "id": "node-sheets-buscar-aprobado",
+      "name": "Buscar Episodio en Aprobado",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        624,
+        416
+      ],
+      "credentials": {
+        "googleApi": {
+          "id": "guQg1RKPItx3Dg5G",
+          "name": "Google Service Account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "node-limitar-un-aprobado",
+      "name": "Tomar Primer Episodio Aprobado",
+      "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
-      "position": [680, 220]
+      "position": [
+        848,
+        416
+      ]
     },
     {
       "parameters": {
-        "command": "git add episodes/ feed.xml index.html README.md && git commit -m \"feat(ep4): publicar Episodio 4 (IA Estrecha vs AGI) en feed RSS y web player\" && git push origin main"
+        "authentication": "serviceAccount",
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1wWxnh9ZZVkH1-9b1oQcME8JlTDqX5XdH4koF96r51QY",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ ({\"Temporada 1\":\"Temporada 1 - Nivel 0\",\"Temporada 2\":\"Temporada 2 - Nivel 1\",\"Temporada 3\":\"Temporada 3 - Nivel 2\",\"Temporada 4\":\"Temporada 4 - Nivel 3 y 4\"})[$node[\"Tomar Primer Episodio Aprobado\"].json[\"Temporada\"]] || \"Temporada 1 - Nivel 0\" }}",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "ID Episodio"
+          ],
+          "value": {
+            "ID Episodio": "={{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"] }}",
+            "Estado": "Publicado",
+            "Fecha de Publicación": "={{ $now.format('yyyy-MM-dd HH:mm') }}"
+          }
+        },
+        "options": {
+          "locationDefine": {
+            "values": {
+              "headerRow": 8,
+              "firstDataRow": 9
+            }
+          }
+        }
       },
-      "id": "git-push",
-      "name": "Git Push a GitHub Pages",
-      "type": "n8n-nodes-base.executeCommand",
-      "typeVersion": 1,
-      "position": [900, 220]
+      "id": "node-sheets-actualizar-publicado",
+      "name": "Google Sheets (Estado = 'Publicado')",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1072,
+        416
+      ],
+      "credentials": {
+        "googleApi": {
+          "id": "guQg1RKPItx3Dg5G",
+          "name": "Google Service Account"
+        }
+      }
     },
     {
       "parameters": {
-        "text": "={{ $json.tweetText }}"
+        "method": "POST",
+        "url": "http://host.docker.internal:5688/sync",
+        "options": {
+          "timeout": 180000
+        }
       },
-      "id": "twitter-post",
-      "name": "Publicar en 𝕏 (@IAsinfiltr0)",
-      "type": "n8n-nodes-base.twitter",
-      "typeVersion": 2,
-      "position": [1120, 220]
+      "id": "node-youtube-auto-sync",
+      "name": "YouTube (Publicar Short y Vídeo 1080p)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1360,
+        560
+      ],
+      "continueOnFail": true
     },
     {
       "parameters": {
-        "chatId": "TU_TELEGRAM_CHAT_ID",
-        "text": "=🚀 *¡IA Sin Filtro — Episodio {{ $json.episode }} Publicado con Éxito!*\n\n*Título:* {{ $json.title }}\n*Plataformas:* RSS, Spotify, Apple Podcasts, iVoox y Amazon Music.\n*Redes:* Tweet emitido en @IAsinfiltr0.\n\n🌐 Landing: https://mgjosea.github.io/ia-sin-filtro-podcast/"
+        "promptType": "define",
+        "text": "=Eres un divulgador y redactor experto en LinkedIn para el podcast \"IA Sin Filtro\", conducido por José IA.\nTu misión es redactar el post semanal de LinkedIn para anunciar el episodio recién publicado.\n\nDATOS DEL EPISODIO PUBLICADO:\n- Temporada: {{ [\"Tomar Primer Episodio Aprobado\"].json[\"Temporada\"] || \"Temporada 1\" }}\n- ID Episodio: {{ [\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"] }}\n- Título: {{ [\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"] }}\n- Concepto Clave: {{ [\"Tomar Primer Episodio Aprobado\"].json[\"Concepto Clave a Explicar\"] }}\n- Temática: {{ [\"Tomar Primer Episodio Aprobado\"].json[\"Temática\"] || \"Divulgación de Inteligencia Artificial\" }}\n\nREGLAS EDITORIALES OBLIGATORIAS:\n1. PROHIBICIÓN TOTAL: NO menciones tu trabajo, tu empresa, comités de dirección, oficinas, reuniones ejecutivas ni vida laboral personal. Céntrate 100% en el tema del episodio de forma divulgativa, fresca y accesible para cualquier persona.\n2. RESUMEN BREVE: Resume de forma ágil y atractiva de qué trata el episodio y qué aprenderá el oyente.\n3. ESTRUCTURA DEL POST:\n   • GANCHO INICIAL: 1 pregunta provocadora o titular breve que despierte curiosidad inmediata.\n   • RESUMEN DEL TEMA: 2 o 3 líneas explicando el núcleo del episodio.\n   • PUNTOS CLAVE: 3 viñetas breves con emojis resumiendo lo más interesante en 5 minutos.\n   • CIERRE: Indicar que ya está disponible para escuchar en 5 minutos.\n\nAñade a continuación este separador exacto:\n---PRIMER_COMENTARIO---\n🎧 Ya disponible en tu plataforma favorita:\n\n🟢 Spotify: https://open.spotify.com/show/2uiohtD8tmilsqhksar5FH\n🟣 Apple Podcasts: https://podcasts.apple.com/es/podcast/ia-sin-filtro/id6832325427\n🟠 iVoox: https://www.ivoox.com/podcast-ia-sin-filtro_sq_f13251680_1.html\n🔵 Amazon Music: https://music.amazon.es/podcasts/a8971519-8174-46f4-ac17-2d3eb0087679/ia-sin-filtro\n🌐 Web Oficial: https://mgjosea.github.io/ia-sin-filtro-podcast/\n\n#InteligenciaArtificial #IA #Podcast #Tecnologia #IASinFiltro #JoseIA"
       },
-      "id": "notif-success",
-      "name": "Confirmación Final (Telegram / Email)",
-      "type": "n8n-nodes-base.telegram",
+      "id": "node-chain-llm-linkedin",
+      "name": "Basic LLM Chain (Generar Post LinkedIn)",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        1296,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "maxOutputTokens": 8192,
+          "temperature": 0.7
+        }
+      },
+      "id": "node-gemini-chat-model-linkedin",
+      "name": "Google Gemini Chat Model (LinkedIn)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1.2,
-      "position": [1340, 220]
+      "position": [
+        1368,
+        392
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "HkhKASoyWVjCUOll",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const responseText = $json.text || \"\";\nconst parts = responseText.split('---PRIMER_COMENTARIO---');\nconst postPrincipal = (parts[0] || \"\").trim();\nconst plataformas = (parts[1] || \"\").trim();\n\nconst postCompleto = plataformas ? `${postPrincipal}\\n\\n${plataformas}` : postPrincipal;\n\nconst ep = $node[\"Tomar Primer Episodio Aprobado\"].json;\n\nreturn [{\n  json: {\n    ...$json,\n    episodio: ep,\n    linkedinPost: postCompleto,\n    linkedinComment: plataformas,\n    linkedinShareUrl: `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(postCompleto)}`\n  }\n}];"
+      },
+      "id": "node-procesar-post-linkedin",
+      "name": "Procesar Post y Comentario LinkedIn",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1648,
+        272
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:5688/linkedin",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"postText\": {{ JSON.stringify($json.linkedinPost) }},\n  \"commentText\": {{ JSON.stringify($json.linkedinComment) }},\n  \"imageUrl\": \"https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg\",\n  \"episodeId\": {{ JSON.stringify($node[\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"]) }},\n  \"episodeTitle\": {{ JSON.stringify($node[\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"]) }},\n  \"webhookUrl\": \"https://hook.eu1.make.com/ohqfjivgkw9mjeh7kjjyo1qhy1lmhpki\"\n}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "node-make-publicar-linkedin",
+      "name": "Publicar en LinkedIn (Automático)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1872,
+        368
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "fromEmail": "IA Sin Filtro <mgjosea@gmail.com>",
+        "toEmail": "mgjosea@gmail.com",
+        "subject": "=[PUBLICADO + LINKEDIN] {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"] }}: {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"] }}",
+        "html": "=<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"color-scheme\" content=\"light dark\">\n  <meta name=\"supported-color-schemes\" content=\"light dark\">\n  <title>Episodio Publicado - IA Sin Filtro</title>\n  <style>\n    :root {\n      color-scheme: light dark;\n      supported-color-schemes: light dark;\n    }\n    body { margin:0; padding:0; background-color:#f1f5f9; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#0f172a; -webkit-text-size-adjust:100%; -webkit-font-smoothing:antialiased; }\n    table { border-collapse:collapse; }\n    td { font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }\n    @media (prefers-color-scheme: dark) {\n      .hdr-text-white { color:#ffffff !important; -webkit-text-fill-color:#ffffff !important; }\n    }\n    @media only screen and (max-width: 600px) {\n      .email-wrapper { width:100% !important; max-width:100% !important; border-radius:0 !important; }\n      .mobile-pad { padding-left:12px !important; padding-right:12px !important; }\n    }\n  </style>\n</head>\n<body style=\"margin:0; padding:0; background-color:#f1f5f9; color:#0f172a; line-height:1.5;\">\n  <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"background-color:#f1f5f9; padding:16px 0;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" width=\"100%\" class=\"email-wrapper\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"max-width:600px; background-color:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #cbd5e1; box-shadow:0 4px 14px rgba(0,0,0,0.06);\">\n          \n          <!-- Header Esmeralda / Bosque Profundo con Blend Mode solo en texto -->\n          <tr>\n            <td class=\"mobile-pad\" style=\"background-color:#022c22; background-image:linear-gradient(135deg, #065f46 0%, #022c22 100%); padding:20px 22px; text-align:left; border-bottom:1px solid #cbd5e1;\">\n              <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n                <tr>\n                  <td style=\"vertical-align:middle; text-align:left;\">\n                    <div style=\"background-color:#000000; mix-blend-mode:screen;\">\n                      <div style=\"background-color:#000000; mix-blend-mode:difference;\">\n                        <div class=\"hdr-text-white\" style=\"display:inline-block; background:rgba(255,255,255,0.22); color:#ffffff !important; -webkit-text-fill-color:#ffffff; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; padding:3px 9px; border-radius:12px; border:1px solid rgba(255,255,255,0.35); margin-bottom:6px;\">\n                          🚀 FASE 3: EPISODIO PUBLICADO EN VIVO\n                        </div>\n                        <h1 class=\"hdr-text-white\" style=\"margin:0; color:#ffffff !important; -webkit-text-fill-color:#ffffff; font-size:19px; font-weight:800; line-height:1.25; letter-spacing:-0.3px; text-shadow:0 1px 2px rgba(0,0,0,0.4);\">\n                          {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"] }}: {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"] }}\n                        </h1>\n                      </div>\n                    </div>\n                  </td>\n                  <td width=\"72\" align=\"right\" style=\"vertical-align:middle; padding-left:12px;\">\n                    <img src=\"https://ia-sin-filtro.duckdns.org/guiones/logo.jpg\" alt=\"IA Sin Filtro\" width=\"62\" height=\"62\" style=\"display:block; border-radius:10px; border:2px solid rgba(255,255,255,0.85); box-shadow:0 3px 10px rgba(0,0,0,0.45);\">\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- Contenido -->\n          <tr>\n            <td class=\"mobile-pad\" style=\"padding:18px 20px;\">\n              <!-- Difusión Status -->\n              <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"background-color:#f0fdf4; border:1px solid #bbf7d0; border-left:4px solid #16a34a; border-radius:8px; margin-bottom:16px;\">\n                <tr>\n                  <td style=\"padding:12px 14px;\">\n                    <b style=\"color:#065f46; font-size:13.5px;\">✅ Difusión Automática Completa:</b>\n                    <div style=\"margin-top:4px; font-size:12px; color:#166534; line-height:1.4;\">\n                      &bull; Audio masterizado en GitHub Pages y Google Drive.<br>\n                      &bull; Feed RSS sincronizado para Spotify, Apple, Amazon e iVoox.<br>\n                      &bull; Estado en Google Sheets actualizado a <b>Publicado</b>.\n                    </div>\n                  </td>\n                </tr>\n              </table>\n\n              <!-- Post LinkedIn -->\n              <div style=\"font-size:13px; font-weight:800; color:#0284c7; margin:14px 0 6px 0; text-transform:uppercase; letter-spacing:0.04em;\">\n                📱 Post de LinkedIn Publicado Automáticamente\n              </div>\n              <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"background-color:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; margin-bottom:18px;\">\n                <tr>\n                  <td style=\"padding:12px 14px; font-size:12.5px; color:#334155; line-height:1.5;\">\n                    {{ $node[\"Generar Copy LinkedIn\"].json.linkedinPost.replace(/\\n/g, \"<br>\") }}\n                  </td>\n                </tr>\n              </table>\n\n              <!-- Botones de Escucha Inmediata -->\n              <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n                <tr>\n                  <td class=\"btn-col\" width=\"48%\" align=\"center\" style=\"background-color:#15803d; border-radius:8px;\">\n                    <a href=\"https://open.spotify.com/show/2uiohtD8tmilsqhksar5FH\" target=\"_blank\" style=\"display:block; padding:11px 12px; font-weight:700; font-size:13px; color:#ffffff !important; -webkit-text-fill-color:#ffffff; background-image:linear-gradient(#15803d,#15803d); text-decoration:none; text-align:center; border-radius:8px;\">\n                      🎧 Escuchar en Spotify &rarr;\n                    </a>\n                  </td>\n                  <td class=\"btn-space\" width=\"4%\"></td>\n                  <td class=\"btn-col\" width=\"48%\" align=\"center\" style=\"background-color:#b91c1c; border-radius:8px;\">\n                    <a href=\"https://www.youtube.com/@jose.iasinfiltro\" target=\"_blank\" style=\"display:block; padding:11px 12px; font-weight:700; font-size:13px; color:#ffffff !important; -webkit-text-fill-color:#ffffff; background-image:linear-gradient(#b91c1c,#b91c1c); text-decoration:none; text-align:center; border-radius:8px;\">\n                      📺 Ver en YouTube &rarr;\n                    </a>\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- Footer Limpio -->\n          <tr>\n            <td style=\"padding:14px 20px; background-color:#f8fafc; border-top:1px solid #e2e8f0; font-size:11px; color:#94a3b8; text-align:center;\">\n              IA Sin Filtro &bull; Pipeline Autónomo n8n &bull; Publicación Automática\n            </td>\n          </tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+        "options": {}
+      },
+      "id": "node-gmail-notificar-publicado",
+      "name": "Gmail (Confirmación de Publicación)",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1872,
+        176
+      ],
+      "webhookId": "58f6f01a-25bd-4d67-be9f-388c1e7bd360",
+      "credentials": {
+        "smtp": {
+          "id": "uthCzHNM62jI74gq",
+          "name": "Gmail SMTP (Permanente)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ia-sin-filtro-fase4-publish",
+        "options": {}
+      },
+      "id": "node-webhook-fase4-publish",
+      "name": "Webhook (Aprobación y Disparo Fase 4)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        176,
+        608
+      ],
+      "webhookId": "ia-sin-filtro-fase4-publish"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.eu1.make.com/ohqfjivgkw9mjeh7kjjyo1qhy1lmhpki",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"action\": \"upload_youtube_short\",\n  \"episodeId\": {{ JSON.stringify([\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"]) }},\n  \"season\": {{ JSON.stringify([\"Tomar Primer Episodio Aprobado\"].json[\"Temporada\"] || \"Temporada 1\") }},\n  \"title\": {{ JSON.stringify([\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"]) }},\n  \"concept\": {{ JSON.stringify([\"Tomar Primer Episodio Aprobado\"].json[\"Concepto Clave a Explicar\"]) }},\n  \"videoUrl\": \"https://ia-sin-filtro.duckdns.org/episodes/shorts_ep\" + (([\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"].match(/\\d+/) || [\"4\"])[0]) + \"_youtube.mp4\",\n  \"description\": {{ JSON.stringify(\"🎙️ \" + [\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"] + \": \"\" + [\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"] + \"\"\n\n\" + ([\"Tomar Primer Episodio Aprobado\"].json[\"Concepto Clave a Explicar\"] || \"\") + \"\n\n🎧 Escucha el episodio completo en Spotify, Apple Podcasts, iVoox y web oficial:\n👉 https://mgjosea.github.io/ia-sin-filtro-podcast/\n\n#IASinFiltro #InteligenciaArtificial #IA #Shorts #JoseIA\") }},\n  \"privacyStatus\": \"public\"\n}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "node-make-youtube-short",
+      "name": "Make.com (Publicar Short en YouTube)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1460,
+        -20
+      ],
+      "continueOnFail": true
     }
   ],
   "connections": {
-    "Webhook Trigger Aprobación": {
-      "main": [[{ "node": "Normalizar Datos Aprobados", "type": "main", "index": 0 }]]
+    "Al hacer clic en Probar Publicación": {
+      "main": [
+        [
+          {
+            "node": "Listar Temporadas (Publicación)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
-    "Cron Jueves 09:00 CET (Fallback Automático)": {
-      "main": [[{ "node": "Normalizar Datos Aprobados", "type": "main", "index": 0 }]]
+    "Cron (Jueves 09:00 AM)": {
+      "main": [
+        [
+          {
+            "node": "Listar Temporadas (Publicación)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
-    "Normalizar Datos Aprobados": {
-      "main": [[{ "node": "Actualizar feed.xml, Landing y README", "type": "main", "index": 0 }]]
+    "Webhook (Aprobación y Disparo Fase 4)": {
+      "main": [
+        [
+          {
+            "node": "Listar Temporadas (Publicación)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
-    "Actualizar feed.xml, Landing y README": {
-      "main": [[{ "node": "Git Push a GitHub Pages", "type": "main", "index": 0 }]]
+    "Listar Temporadas (Publicación)": {
+      "main": [
+        [
+          {
+            "node": "Buscar Episodio en Aprobado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
-    "Git Push a GitHub Pages": {
-      "main": [[{ "node": "Publicar en 𝕏 (@IAsinfiltr0)", "type": "main", "index": 0 }]]
+    "Buscar Episodio en Aprobado": {
+      "main": [
+        [
+          {
+            "node": "Tomar Primer Episodio Aprobado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
-    "Publicar en 𝕏 (@IAsinfiltr0)": {
-      "main": [[{ "node": "Confirmación Final (Telegram / Email)", "type": "main", "index": 0 }]]
+    "Tomar Primer Episodio Aprobado": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets (Estado = 'Publicado')",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets (Estado = 'Publicado')": {
+      "main": [
+        [
+          {
+            "node": "Make.com (Publicar Short en YouTube)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "YouTube (Publicar Short y Vídeo 1080p)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Basic LLM Chain (Generar Post LinkedIn)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model (LinkedIn)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain (Generar Post LinkedIn)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain (Generar Post LinkedIn)": {
+      "main": [
+        [
+          {
+            "node": "Procesar Post y Comentario LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar Post y Comentario LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Publicar en LinkedIn (Automático)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Gmail (Confirmación de Publicación)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "binaryMode": "separate"
   }
 }
