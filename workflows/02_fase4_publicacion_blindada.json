@@ -9,7 +9,7 @@
       "typeVersion": 1,
       "position": [
         176,
-        224
+        96
       ]
     },
     {
@@ -32,7 +32,7 @@
       "typeVersion": 1.2,
       "position": [
         176,
-        416
+        288
       ]
     },
     {
@@ -45,7 +45,7 @@
       "typeVersion": 2,
       "position": [
         400,
-        416
+        288
       ]
     },
     {
@@ -85,7 +85,7 @@
       "typeVersion": 4.5,
       "position": [
         624,
-        416
+        288
       ],
       "credentials": {
         "googleApi": {
@@ -102,7 +102,7 @@
       "typeVersion": 1,
       "position": [
         848,
-        416
+        288
       ]
     },
     {
@@ -145,7 +145,7 @@
       "typeVersion": 4.5,
       "position": [
         1072,
-        416
+        288
       ],
       "credentials": {
         "googleApi": {
@@ -168,7 +168,7 @@
       "typeVersion": 4.2,
       "position": [
         1360,
-        560
+        576
       ],
       "continueOnFail": true
     },
@@ -183,7 +183,7 @@
       "typeVersion": 1.4,
       "position": [
         1296,
-        160
+        176
       ]
     },
     {
@@ -199,7 +199,7 @@
       "typeVersion": 1.2,
       "position": [
         1368,
-        392
+        408
       ],
       "credentials": {
         "googlePalmApi": {
@@ -218,7 +218,7 @@
       "typeVersion": 2,
       "position": [
         1648,
-        272
+        288
       ]
     },
     {
@@ -227,7 +227,7 @@
         "url": "http://host.docker.internal:5688/linkedin",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"postText\": {{ JSON.stringify($json.linkedinPost) }},\n  \"commentText\": {{ JSON.stringify($json.linkedinComment) }},\n  \"imageUrl\": \"https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg\",\n  \"episodeId\": {{ JSON.stringify($node[\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"]) }},\n  \"episodeTitle\": {{ JSON.stringify($node[\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"]) }},\n  \"webhookUrl\": \"https://hook.eu1.make.com/ohqfjivgkw9mjeh7kjjyo1qhy1lmhpki\"\n}",
+        "jsonBody": "={\n  \"content\": {{ JSON.stringify(.linkedinPost) }},\n  \"postText\": {{ JSON.stringify(.linkedinPost) }},\n  \"text\": {{ JSON.stringify(.linkedinPost) }},\n  \"commentText\": {{ JSON.stringify(.linkedinComment) }},\n  \"comment\": {{ JSON.stringify(.linkedinComment) }},\n  \"firstComment\": {{ JSON.stringify(.linkedinComment) }},\n  \"imageUrl\": \"https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg\",\n  \"episodeId\": {{ JSON.stringify([\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"]) }},\n  \"episodeTitle\": {{ JSON.stringify([\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"]) }},\n  \"webhookUrl\": \"https://hook.eu1.make.com/ohqfjivgkw9mjeh7kjjyo1qhy1lmhpki\"\n}",
         "options": {
           "timeout": 30000
         }
@@ -238,7 +238,7 @@
       "typeVersion": 4.2,
       "position": [
         1872,
-        368
+        384
       ],
       "continueOnFail": true
     },
@@ -247,7 +247,7 @@
         "fromEmail": "IA Sin Filtro <mgjosea@gmail.com>",
         "toEmail": "mgjosea@gmail.com",
         "subject": "=[PUBLICADO + LINKEDIN] {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"] }}: {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"] }}",
-        "html": "=<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"color-scheme\" content=\"light dark\">\n  <meta name=\"supported-color-schemes\" content=\"light dark\">\n  <title>Episodio Publicado - IA Sin Filtro</title>\n  <style>\n    :root {\n      color-scheme: light dark;\n      supported-color-schemes: light dark;\n    }\n    body { margin:0; padding:0; background-color:#f1f5f9; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#0f172a; -webkit-text-size-adjust:100%; -webkit-font-smoothing:antialiased; }\n    table { border-collapse:collapse; }\n    td { font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }\n    @media (prefers-color-scheme: dark) {\n      .hdr-text-white { color:#ffffff !important; -webkit-text-fill-color:#ffffff !important; }\n    }\n    @media only screen and (max-width: 600px) {\n      .email-wrapper { width:100% !important; max-width:100% !important; border-radius:0 !important; }\n      .mobile-pad { padding-left:12px !important; padding-right:12px !important; }\n    }\n  </style>\n</head>\n<body style=\"margin:0; padding:0; background-color:#f1f5f9; color:#0f172a; line-height:1.5;\">\n  <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"background-color:#f1f5f9; padding:16px 0;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" width=\"100%\" class=\"email-wrapper\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"max-width:600px; background-color:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #cbd5e1; box-shadow:0 4px 14px rgba(0,0,0,0.06);\">\n          \n          <!-- Header Esmeralda / Bosque Profundo con Blend Mode solo en texto -->\n          <tr>\n            <td class=\"mobile-pad\" style=\"background-color:#022c22; background-image:linear-gradient(135deg, #065f46 0%, #022c22 100%); padding:20px 22px; text-align:left; border-bottom:1px solid #cbd5e1;\">\n              <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n                <tr>\n                  <td style=\"vertical-align:middle; text-align:left;\">\n                    <div style=\"background-color:#000000; mix-blend-mode:screen;\">\n                      <div style=\"background-color:#000000; mix-blend-mode:difference;\">\n                        <div class=\"hdr-text-white\" style=\"display:inline-block; background:rgba(255,255,255,0.22); color:#ffffff !important; -webkit-text-fill-color:#ffffff; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; padding:3px 9px; border-radius:12px; border:1px solid rgba(255,255,255,0.35); margin-bottom:6px;\">\n                          🚀 FASE 3: EPISODIO PUBLICADO EN VIVO\n                        </div>\n                        <h1 class=\"hdr-text-white\" style=\"margin:0; color:#ffffff !important; -webkit-text-fill-color:#ffffff; font-size:19px; font-weight:800; line-height:1.25; letter-spacing:-0.3px; text-shadow:0 1px 2px rgba(0,0,0,0.4);\">\n                          {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"] }}: {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"] }}\n                        </h1>\n                      </div>\n                    </div>\n                  </td>\n                  <td width=\"72\" align=\"right\" style=\"vertical-align:middle; padding-left:12px;\">\n                    <img src=\"https://ia-sin-filtro.duckdns.org/guiones/logo.jpg\" alt=\"IA Sin Filtro\" width=\"62\" height=\"62\" style=\"display:block; border-radius:10px; border:2px solid rgba(255,255,255,0.85); box-shadow:0 3px 10px rgba(0,0,0,0.45);\">\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- Contenido -->\n          <tr>\n            <td class=\"mobile-pad\" style=\"padding:18px 20px;\">\n              <!-- Difusión Status -->\n              <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"background-color:#f0fdf4; border:1px solid #bbf7d0; border-left:4px solid #16a34a; border-radius:8px; margin-bottom:16px;\">\n                <tr>\n                  <td style=\"padding:12px 14px;\">\n                    <b style=\"color:#065f46; font-size:13.5px;\">✅ Difusión Automática Completa:</b>\n                    <div style=\"margin-top:4px; font-size:12px; color:#166534; line-height:1.4;\">\n                      &bull; Audio masterizado en GitHub Pages y Google Drive.<br>\n                      &bull; Feed RSS sincronizado para Spotify, Apple, Amazon e iVoox.<br>\n                      &bull; Estado en Google Sheets actualizado a <b>Publicado</b>.\n                    </div>\n                  </td>\n                </tr>\n              </table>\n\n              <!-- Post LinkedIn -->\n              <div style=\"font-size:13px; font-weight:800; color:#0284c7; margin:14px 0 6px 0; text-transform:uppercase; letter-spacing:0.04em;\">\n                📱 Post de LinkedIn Publicado Automáticamente\n              </div>\n              <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"background-color:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; margin-bottom:18px;\">\n                <tr>\n                  <td style=\"padding:12px 14px; font-size:12.5px; color:#334155; line-height:1.5;\">\n                    {{ $node[\"Generar Copy LinkedIn\"].json.linkedinPost.replace(/\\n/g, \"<br>\") }}\n                  </td>\n                </tr>\n              </table>\n\n              <!-- Botones de Escucha Inmediata -->\n              <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n                <tr>\n                  <td class=\"btn-col\" width=\"48%\" align=\"center\" style=\"background-color:#15803d; border-radius:8px;\">\n                    <a href=\"https://open.spotify.com/show/2uiohtD8tmilsqhksar5FH\" target=\"_blank\" style=\"display:block; padding:11px 12px; font-weight:700; font-size:13px; color:#ffffff !important; -webkit-text-fill-color:#ffffff; background-image:linear-gradient(#15803d,#15803d); text-decoration:none; text-align:center; border-radius:8px;\">\n                      🎧 Escuchar en Spotify &rarr;\n                    </a>\n                  </td>\n                  <td class=\"btn-space\" width=\"4%\"></td>\n                  <td class=\"btn-col\" width=\"48%\" align=\"center\" style=\"background-color:#b91c1c; border-radius:8px;\">\n                    <a href=\"https://www.youtube.com/@jose.iasinfiltro\" target=\"_blank\" style=\"display:block; padding:11px 12px; font-weight:700; font-size:13px; color:#ffffff !important; -webkit-text-fill-color:#ffffff; background-image:linear-gradient(#b91c1c,#b91c1c); text-decoration:none; text-align:center; border-radius:8px;\">\n                      📺 Ver en YouTube &rarr;\n                    </a>\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- Footer Limpio -->\n          <tr>\n            <td style=\"padding:14px 20px; background-color:#f8fafc; border-top:1px solid #e2e8f0; font-size:11px; color:#94a3b8; text-align:center;\">\n              IA Sin Filtro &bull; Pipeline Autónomo n8n &bull; Publicación Automática\n            </td>\n          </tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+        "html": "=<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta name=\"color-scheme\" content=\"light dark\">\n  <meta name=\"supported-color-schemes\" content=\"light dark\">\n  <title>Episodio Publicado - IA Sin Filtro</title>\n  <style>\n    :root {\n      color-scheme: light dark;\n      supported-color-schemes: light dark;\n    }\n    body { margin:0; padding:0; background-color:#f1f5f9; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#0f172a; -webkit-text-size-adjust:100%; -webkit-font-smoothing:antialiased; }\n    table { border-collapse:collapse; }\n    td { font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }\n    @media (prefers-color-scheme: dark) {\n      .hdr-text-white { color:#ffffff !important; -webkit-text-fill-color:#ffffff !important; }\n    }\n    @media only screen and (max-width: 600px) {\n      .email-wrapper { width:100% !important; max-width:100% !important; border-radius:0 !important; }\n      .mobile-pad { padding-left:12px !important; padding-right:12px !important; }\n    }\n  </style>\n</head>\n<body style=\"margin:0; padding:0; background-color:#f1f5f9; color:#0f172a; line-height:1.5;\">\n  <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"background-color:#f1f5f9; padding:16px 0;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" width=\"100%\" class=\"email-wrapper\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"max-width:600px; background-color:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #cbd5e1; box-shadow:0 4px 14px rgba(0,0,0,0.06);\">\n          \n          <!-- Header Esmeralda / Bosque Profundo con Blend Mode solo en texto -->\n          <tr>\n            <td class=\"mobile-pad\" style=\"background-color:#022c22; background-image:linear-gradient(135deg, #065f46 0%, #022c22 100%); padding:20px 22px; text-align:left; border-bottom:1px solid #cbd5e1;\">\n              <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n                <tr>\n                  <td style=\"vertical-align:middle; text-align:left;\">\n                    <div style=\"background-color:#000000; mix-blend-mode:screen;\">\n                      <div style=\"background-color:#000000; mix-blend-mode:difference;\">\n                        <div class=\"hdr-text-white\" style=\"display:inline-block; background:rgba(255,255,255,0.22); color:#ffffff !important; -webkit-text-fill-color:#ffffff; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; padding:3px 9px; border-radius:12px; border:1px solid rgba(255,255,255,0.35); margin-bottom:6px;\">\n                          🚀 FASE 3: EPISODIO PUBLICADO EN VIVO\n                        </div>\n                        <h1 class=\"hdr-text-white\" style=\"margin:0; color:#ffffff !important; -webkit-text-fill-color:#ffffff; font-size:19px; font-weight:800; line-height:1.25; letter-spacing:-0.3px; text-shadow:0 1px 2px rgba(0,0,0,0.4);\">\n                          {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"] }}: {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"] }}\n                        </h1>\n                      </div>\n                    </div>\n                  </td>\n                  <td width=\"72\" align=\"right\" style=\"vertical-align:middle; padding-left:12px;\">\n                    <img src=\"https://ia-sin-filtro.duckdns.org/guiones/logo.jpg\" alt=\"IA Sin Filtro\" width=\"62\" height=\"62\" style=\"display:block; border-radius:10px; border:2px solid rgba(255,255,255,0.85); box-shadow:0 3px 10px rgba(0,0,0,0.45);\">\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- Contenido -->\n          <tr>\n            <td class=\"mobile-pad\" style=\"padding:18px 20px;\">\n              <!-- Difusión Status -->\n              <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"background-color:#f0fdf4; border:1px solid #bbf7d0; border-left:4px solid #16a34a; border-radius:8px; margin-bottom:16px;\">\n                <tr>\n                  <td style=\"padding:12px 14px;\">\n                    <b style=\"color:#065f46; font-size:13.5px;\">✅ Difusión Automática Completa:</b>\n                    <div style=\"margin-top:4px; font-size:12px; color:#166534; line-height:1.4;\">\n                      &bull; Audio masterizado en GitHub Pages y Google Drive.<br>\n                      &bull; Feed RSS sincronizado para Spotify, Apple, Amazon e iVoox.<br>\n                      &bull; Estado en Google Sheets actualizado a <b>Publicado</b>.\n                    </div>\n                  </td>\n                </tr>\n              </table>\n\n              <!-- Post LinkedIn -->\n              <div style=\"font-size:13px; font-weight:800; color:#0284c7; margin:14px 0 6px 0; text-transform:uppercase; letter-spacing:0.04em;\">\n                📱 Post de LinkedIn Publicado Automáticamente\n              </div>\n              <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"background-color:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; margin-bottom:18px;\">\n                <tr>\n                  <td style=\"padding:12px 14px; font-size:12.5px; color:#334155; line-height:1.5;\">\n                    {{ $node[\"Procesar Post y Comentario LinkedIn\"].json.linkedinPost.replace(/\\n/g, \"<br>\") }}\n                  </td>\n                </tr>\n              </table>\n\n              <!-- Botones de Escucha Inmediata -->\n              <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n                <tr>\n                  <td class=\"btn-col\" width=\"48%\" align=\"center\" style=\"background-color:#15803d; border-radius:8px;\">\n                    <a href=\"https://open.spotify.com/show/2uiohtD8tmilsqhksar5FH\" target=\"_blank\" style=\"display:block; padding:11px 12px; font-weight:700; font-size:13px; color:#ffffff !important; -webkit-text-fill-color:#ffffff; background-image:linear-gradient(#15803d,#15803d); text-decoration:none; text-align:center; border-radius:8px;\">\n                      🎧 Escuchar en Spotify &rarr;\n                    </a>\n                  </td>\n                  <td class=\"btn-space\" width=\"4%\"></td>\n                  <td class=\"btn-col\" width=\"48%\" align=\"center\" style=\"background-color:#b91c1c; border-radius:8px;\">\n                    <a href=\"https://www.youtube.com/@jose.iasinfiltro\" target=\"_blank\" style=\"display:block; padding:11px 12px; font-weight:700; font-size:13px; color:#ffffff !important; -webkit-text-fill-color:#ffffff; background-image:linear-gradient(#b91c1c,#b91c1c); text-decoration:none; text-align:center; border-radius:8px;\">\n                      📺 Ver en YouTube &rarr;\n                    </a>\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- Footer Limpio -->\n          <tr>\n            <td style=\"padding:14px 20px; background-color:#f8fafc; border-top:1px solid #e2e8f0; font-size:11px; color:#94a3b8; text-align:center;\">\n              IA Sin Filtro &bull; Pipeline Autónomo n8n &bull; Publicación Automática\n            </td>\n          </tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
         "options": {}
       },
       "id": "node-gmail-notificar-publicado",
@@ -256,7 +256,7 @@
       "typeVersion": 2.1,
       "position": [
         1872,
-        176
+        192
       ],
       "webhookId": "58f6f01a-25bd-4d67-be9f-388c1e7bd360",
       "credentials": {
@@ -264,7 +264,8 @@
           "id": "uthCzHNM62jI74gq",
           "name": "Gmail SMTP (Permanente)"
         }
-      }
+      },
+      "continueOnFail": true
     },
     {
       "parameters": {
@@ -278,30 +279,9 @@
       "typeVersion": 2,
       "position": [
         176,
-        608
+        480
       ],
       "webhookId": "ia-sin-filtro-fase4-publish"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://hook.eu1.make.com/ohqfjivgkw9mjeh7kjjyo1qhy1lmhpki",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"action\": \"upload_youtube_short\",\n  \"episodeId\": {{ JSON.stringify([\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"]) }},\n  \"season\": {{ JSON.stringify([\"Tomar Primer Episodio Aprobado\"].json[\"Temporada\"] || \"Temporada 1\") }},\n  \"title\": {{ JSON.stringify([\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"]) }},\n  \"concept\": {{ JSON.stringify([\"Tomar Primer Episodio Aprobado\"].json[\"Concepto Clave a Explicar\"]) }},\n  \"videoUrl\": \"https://ia-sin-filtro.duckdns.org/episodes/shorts_ep\" + (([\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"].match(/\\d+/) || [\"4\"])[0]) + \"_youtube.mp4\",\n  \"description\": {{ JSON.stringify(\"🎙️ \" + [\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"] + \": \"\" + [\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"] + \"\"\n\n\" + ([\"Tomar Primer Episodio Aprobado\"].json[\"Concepto Clave a Explicar\"] || \"\") + \"\n\n🎧 Escucha el episodio completo en Spotify, Apple Podcasts, iVoox y web oficial:\n👉 https://mgjosea.github.io/ia-sin-filtro-podcast/\n\n#IASinFiltro #InteligenciaArtificial #IA #Shorts #JoseIA\") }},\n  \"privacyStatus\": \"public\"\n}",
-        "options": {
-          "timeout": 60000
-        }
-      },
-      "id": "node-make-youtube-short",
-      "name": "Make.com (Publicar Short en YouTube)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1460,
-        -20
-      ],
-      "continueOnFail": true
     }
   ],
   "connections": {
@@ -374,11 +354,6 @@
     "Google Sheets (Estado = 'Publicado')": {
       "main": [
         [
-          {
-            "node": "Make.com (Publicar Short en YouTube)",
-            "type": "main",
-            "index": 0
-          },
           {
             "node": "YouTube (Publicar Short y Vídeo 1080p)",
             "type": "main",
