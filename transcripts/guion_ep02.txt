@@ -1,0 +1,31 @@
+¿Te has parado a pensar alguna vez qué tienen en común un matemático británico descifrando códigos secretos en los años cincuenta... y el teléfono móvil que llevas ahora mismo en el bolsillo?
+
+Aunque hoy parezca que la inteligencia artificial acaba de aterrizar en nuestras vidas como una tormenta repentina, la realidad es mucho más fascinante. Lo que hoy usamos para redactar correos, generar imágenes o traducir conversaciones en tiempo real es el resultado de más de siete décadas de genialidades, desilusiones monumentales y giros inesperados.
+
+¡Hola a todos! Bienvenidos a IA Sin Filtro, tu píldora semanal de inteligencia artificial y tecnología explicada en cinco minutos. Soy Jose.ÍA, tu anfitrión digital, y hoy nos sumergimos en una aventura apasionante: la breve pero intensa historia de cómo la inteligencia artificial pasó de ser un sueño casi filosófico... a vivir directamente en la palma de tu mano.
+
+Hoy vas a descubrir los hitos que marcaron este camino, por qué la ciencia estuvo a punto de rendirse durante los temidos inviernos de la tecnología, y qué tres piezas tuvieron que encajar para que la inteligencia artificial explotase definitivamente en nuestro día a día.
+
+Todo comenzó oficialmente en 1950, cuando el matemático Alan Turing planteó una pregunta tan sencilla como provocadora: ¿pueden pensar las máquinas? Para responderla, ideó su célebre juego de la imitación, lo que hoy conocemos como el Test de Turing. Pocos años después, en el caluroso verano de 1956, un grupo de científicos visionarios se reunió en la Universidad de Dartmouth. Entre cafés y pizarras llenas de fórmulas, acuñaron por primera vez el término "inteligencia artificial". Su optimismo era tan desbordante que afirmaban que en solo una generación lograrían crear una máquina tan inteligente como un ser humano.
+
+Pero la realidad tenía otros planes.
+
+Para entender lo que ocurrió después, imagina que diseñas el motor de un bólido extraordinario, perfecto sobre el papel. Pero hay un gran problema: vives en el siglo diecinueve, no tienes gasolina refinada para alimentarlo y tampoco existen carreteras asfaltadas por donde hacerlo rodar. Eso fue exactamente lo que le ocurrió a la inteligencia artificial durante los años setenta y ochenta. Los algoritmos matemáticos ya eran brillantes, pero los ordenadores de la época eran lentos, caros y apenas podían almacenar un puñado de documentos de texto.
+
+Llegaron entonces los llamados "inviernos de la IA". El entusiasmo inicial dio paso a la frustración; se congelaron las inversiones, los gobiernos retiraron los presupuestos y el campo entero cayó en un prolongado letargo. Muchos pensaron que la idea de una máquina inteligente era simplemente un espejismo inalcanzable.
+
+Sin embargo, en silencio, las condiciones del mundo estaban a punto de cambiar para siempre. Hacia la década de dos mil diez, tres fuerzas monumentales coincidieron en el tiempo: primero, internet generó un océano colosal de datos, la gasolina que tanto faltaba; segundo, los procesadores gráficos ofrecieron una potencia de cálculo paralela nunca vista; y tercero, los investigadores perfeccionaron las redes neuronales profundas. El motor por fin tenía combustible infinito y autopistas de alta velocidad.
+
+El salto fue imparable: pasamos de Deep Blue ganando al ajedrez por pura fuerza bruta en 1997, al aprendizaje profundo de AlphaGo en 2016, y de ahí al gran estallido de los modelos generativos actuales.
+
+¿Y cuál es el verdadero milagro de esta historia? Que toda esa potencia colosal que antes requería salas enteras de servidores refrigerados, hoy vive concentrada en un chip de silicio del tamaño de tu uña, dentro de tu teléfono móvil. Cada vez que tu cámara desenfoca un retrato, cada vez que tu teclado anticipa lo que vas a escribir, o cuando una aplicación traduce un cartel al instante sin internet, estás ejecutando en milésimas de segundo setenta años de historia de la computación humana.
+
+La inteligencia artificial no nació ayer. Ha sido una carrera de relevos titánica entre varias generaciones de científicos que no se rindieron cuando todo parecía perdido.
+
+Soy Jose.ÍA, creador y anfitrión de IA Sin Filtro.
+
+Y antes de despedirme, prepárate para lo que viene, porque en nuestro próximo episodio entraremos en un terreno fascinante: desmontaremos los grandes Mitos frente a las Realidades de la Inteligencia Artificial. ¿Nos va a quitar el trabajo la tecnología mañana mismo? ¿O estamos confundiendo ciencia ficción con matemáticas aplicadas? Te aseguro que la respuesta te va a sorprender.
+
+Si este viaje en el tiempo te ha aportado valor, suscríbete ahora mismo a IA Sin Filtro en Spotify, Apple Podcasts, Amazon Music, iVoox o en tu plataforma de podcasting preferida. Activa la campanita para no perderte ningún nuevo episodio cada semana y comparte este capítulo con tus colegas o amigos que quieran entender la tecnología de verdad y sin humo.
+
+¡Nos escuchamos la próxima semana con mucha más energía y más IA Sin Filtro! ¡Hasta la próxima!

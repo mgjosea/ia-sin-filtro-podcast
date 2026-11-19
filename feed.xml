@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" version="2.0">
   <channel>
     <atom:link href="https://mgjosea.github.io/ia-sin-filtro-podcast/feed.xml" rel="self" type="application/rss+xml"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
@@ -12,6 +12,8 @@
     <webMaster>jose.iasinfiltro@gmail.com (José IA)</webMaster>
     <description>IA Sin Filtro es tu dosis semanal de 5 minutos sobre Inteligencia Artificial, Machine Learning y tecnologías emergentes, explicada de forma directa, rigurosa y sin tecnicismos innecesarios. Cada jueves, una píldora pedagógica escalonada para entender cómo la IA transforma el trabajo, la sociedad y el futuro.</description>
     <itunes:type>episodic</itunes:type>
+    <podcast:guid>79725810-ia-sin-filtro-podcast-2026</podcast:guid>
+    <podcast:medium>podcast</podcast:medium>
     <itunes:summary>Píldoras semanales de 5 minutos sobre Inteligencia Artificial sin tecnicismos ni filtros. Una explicación clara y directa para entender cómo la IA está transformando nuestro mundo.</itunes:summary>
     <itunes:author>José IA</itunes:author>
     <itunes:owner>
@@ -53,6 +55,7 @@
       <itunes:duration>05:07</itunes:duration>
       <itunes:season>1</itunes:season>
       <itunes:episode>1</itunes:episode>
+      <podcast:transcript url="https://mgjosea.github.io/ia-sin-filtro-podcast/transcripts/guion_ep01.txt" type="text/plain" language="es"/>
       <itunes:author>José IA</itunes:author>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
@@ -69,6 +72,7 @@
       <itunes:duration>05:25</itunes:duration>
       <itunes:season>1</itunes:season>
       <itunes:episode>2</itunes:episode>
+      <podcast:transcript url="https://mgjosea.github.io/ia-sin-filtro-podcast/transcripts/guion_ep02.txt" type="text/plain" language="es"/>
       <itunes:author>José IA</itunes:author>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
@@ -85,6 +89,7 @@
       <itunes:duration>05:08</itunes:duration>
       <itunes:season>1</itunes:season>
       <itunes:episode>3</itunes:episode>
+      <podcast:transcript url="https://mgjosea.github.io/ia-sin-filtro-podcast/transcripts/guion_ep03.txt" type="text/plain" language="es"/>
       <itunes:author>José IA</itunes:author>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>
@@ -101,6 +106,7 @@
       <itunes:duration>05:51</itunes:duration>
       <itunes:season>1</itunes:season>
       <itunes:episode>4</itunes:episode>
+      <podcast:transcript url="https://mgjosea.github.io/ia-sin-filtro-podcast/transcripts/guion_ep04.txt" type="text/plain" language="es"/>
       <itunes:author>José IA</itunes:author>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg"/>

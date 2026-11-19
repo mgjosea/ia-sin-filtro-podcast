@@ -4,3 +4,5 @@ client_secret*.json
 *.pem
 __pycache__/
 .DS_Store
+*.mp4
+*_Master.mp3

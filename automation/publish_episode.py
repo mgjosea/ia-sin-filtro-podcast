@@ -15,6 +15,7 @@ import re
 ET.register_namespace('itunes', 'http://www.itunes.com/dtds/podcast-1.0.dtd')
 ET.register_namespace('content', 'http://purl.org/rss/1.0/modules/content/')
 ET.register_namespace('atom', 'http://www.w3.org/2005/Atom')
+ET.register_namespace('podcast', 'https://podcastindex.org/namespace/1.0')
 
 REPO_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 FEED_FILE = os.path.join(REPO_DIR, "feed.xml")
@@ -115,6 +116,13 @@ def publish_episode(
     
     e_num_el = ET.SubElement(item, f"{ITUNES_NS}episode")
     e_num_el.text = str(episode_num)
+
+    PODCAST_NS = "{https://podcastindex.org/namespace/1.0}"
+    ET.SubElement(item, f"{PODCAST_NS}transcript", {
+        "url": f"{base_url}/transcripts/guion_ep{episode_num:02d}.txt",
+        "type": "text/plain",
+        "language": "es"
+    })
     
     a_el = ET.SubElement(item, f"{ITUNES_NS}author")
     a_el.text = "José IA"
