@@ -1,5 +1,5 @@
 {
-  "name": "IA Sin Filtro - Fase 4: Publicación Blindada y Distribución (Jueves)",
+  "name": "IA Sin Filtro - Fase 4: Publicación Blindada vía Make.com (Jueves)",
   "nodes": [
     {
       "parameters": {},
@@ -156,38 +156,6 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "http://host.docker.internal:5688/sync",
-        "options": {
-          "timeout": 180000
-        }
-      },
-      "id": "node-youtube-auto-sync",
-      "name": "YouTube (Publicar Short y Vídeo 1080p)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1360,
-        576
-      ],
-      "continueOnFail": true
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Eres un divulgador y redactor experto en LinkedIn para el podcast \"IA Sin Filtro\", conducido por José IA.\nTu misión es redactar el post semanal de LinkedIn para anunciar el episodio recién publicado.\n\nDATOS DEL EPISODIO PUBLICADO:\n- Temporada: {{ [\"Tomar Primer Episodio Aprobado\"].json[\"Temporada\"] || \"Temporada 1\" }}\n- ID Episodio: {{ [\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"] }}\n- Título: {{ [\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"] }}\n- Concepto Clave: {{ [\"Tomar Primer Episodio Aprobado\"].json[\"Concepto Clave a Explicar\"] }}\n- Temática: {{ [\"Tomar Primer Episodio Aprobado\"].json[\"Temática\"] || \"Divulgación de Inteligencia Artificial\" }}\n\nREGLAS EDITORIALES OBLIGATORIAS:\n1. PROHIBICIÓN TOTAL: NO menciones tu trabajo, tu empresa, comités de dirección, oficinas, reuniones ejecutivas ni vida laboral personal. Céntrate 100% en el tema del episodio de forma divulgativa, fresca y accesible para cualquier persona.\n2. RESUMEN BREVE: Resume de forma ágil y atractiva de qué trata el episodio y qué aprenderá el oyente.\n3. ESTRUCTURA DEL POST:\n   • GANCHO INICIAL: 1 pregunta provocadora o titular breve que despierte curiosidad inmediata.\n   • RESUMEN DEL TEMA: 2 o 3 líneas explicando el núcleo del episodio.\n   • PUNTOS CLAVE: 3 viñetas breves con emojis resumiendo lo más interesante en 5 minutos.\n   • CIERRE: Indicar que ya está disponible para escuchar en 5 minutos.\n\nAñade a continuación este separador exacto:\n---PRIMER_COMENTARIO---\n🎧 Ya disponible en tu plataforma favorita:\n\n🟢 Spotify: https://open.spotify.com/show/2uiohtD8tmilsqhksar5FH\n🟣 Apple Podcasts: https://podcasts.apple.com/es/podcast/ia-sin-filtro/id6832325427\n🟠 iVoox: https://www.ivoox.com/podcast-ia-sin-filtro_sq_f13251680_1.html\n🔵 Amazon Music: https://music.amazon.es/podcasts/a8971519-8174-46f4-ac17-2d3eb0087679/ia-sin-filtro\n🌐 Web Oficial: https://mgjosea.github.io/ia-sin-filtro-podcast/\n\n#InteligenciaArtificial #IA #Podcast #Tecnologia #IASinFiltro #JoseIA"
-      },
-      "id": "node-chain-llm-linkedin",
-      "name": "Basic LLM Chain (Generar Post LinkedIn)",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
-      "position": [
-        1296,
-        176
-      ]
-    },
-    {
-      "parameters": {
         "options": {
           "maxOutputTokens": 8192,
           "temperature": 0.7
@@ -210,35 +178,65 @@
     },
     {
       "parameters": {
-        "jsCode": "const responseText = $json.text || \"\";\nconst parts = responseText.split('---PRIMER_COMENTARIO---');\nconst postPrincipal = (parts[0] || \"\").trim();\nconst plataformas = (parts[1] || \"\").trim();\n\nconst postCompleto = plataformas ? `${postPrincipal}\\n\\n${plataformas}` : postPrincipal;\n\nconst ep = $node[\"Tomar Primer Episodio Aprobado\"].json;\n\nreturn [{\n  json: {\n    ...$json,\n    episodio: ep,\n    linkedinPost: postCompleto,\n    linkedinComment: plataformas,\n    linkedinShareUrl: `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(postCompleto)}`\n  }\n}];"
+        "httpMethod": "POST",
+        "path": "ia-sin-filtro-fase4-publish",
+        "options": {}
       },
-      "id": "node-procesar-post-linkedin",
-      "name": "Procesar Post y Comentario LinkedIn",
+      "id": "node-webhook-fase4-publish",
+      "name": "Webhook (Aprobación y Disparo Fase 4)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        176,
+        480
+      ],
+      "webhookId": "ia-sin-filtro-fase4-publish"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Eres el redactor y divulgador oficial del podcast \"IA Sin Filtro\", conducido por José IA.\nTu misión es redactar los copys semanales para anunciar el episodio recién publicado en redes sociales.\n\nDATOS DEL EPISODIO PUBLICADO:\n- Temporada: {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"Temporada\"] || \"Temporada 1\" }}\n- ID Episodio: {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"] }}\n- Título: {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"] }}\n- Concepto Clave: {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"Concepto Clave a Explicar\"] }}\n- Temática: {{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"Temática\"] || \"Divulgación de Inteligencia Artificial\" }}\n\nREGLAS EDITORIALES:\n1. PROHIBICIÓN TOTAL: NO menciones tu trabajo, tu empresa, comités de dirección ni vida laboral. Céntrate 100% en el tema del episodio de forma divulgativa, fresca y accesible para cualquier persona.\n2. ESTRUCTURA EXACTA REQUERIDA (utiliza estas etiquetas obligatorias):\n\n[LINKEDIN_POST]\n• GANCHO INICIAL: 1 pregunta provocadora que despierte curiosidad inmediata.\n• RESUMEN DEL TEMA: 2 o 3 líneas explicando el núcleo del episodio.\n• PUNTOS CLAVE: 3 viñetas breves con emojis resumiendo lo más interesante en 5 minutos.\n• CIERRE: Indicar que ya está disponible para escuchar en 5 minutos.\n\n[LINKEDIN_COMMENT]\n🎧 Ya disponible en tu plataforma favorita:\n🟢 Spotify: https://open.spotify.com/show/2uiohtD8tmilsqhksar5FH\n🟣 Apple Podcasts: https://podcasts.apple.com/es/podcast/ia-sin-filtro/id6832325427\n🟠 iVoox: https://www.ivoox.com/podcast-ia-sin-filtro_sq_f13251680_1.html\n🔵 Amazon Music: https://music.amazon.es/podcasts/a8971519-8174-46f4-ac17-2d3eb0087679/ia-sin-filtro\n🌐 Web Oficial: https://mgjosea.github.io/ia-sin-filtro-podcast/\n#InteligenciaArtificial #IA #Podcast #Tecnologia #IASinFiltro #JoseIA\n\n[TWEET_X]\n🎙️ ¡Nuevo episodio de #IASinFiltro!\n{{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"] }}: \"{{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"] }}\"\n{{ $node[\"Tomar Primer Episodio Aprobado\"].json[\"Concepto Clave a Explicar\"] }}\n🎧 Escúchalo en 5 min: https://mgjosea.github.io/ia-sin-filtro-podcast/\n#IA #InteligenciaArtificial"
+      },
+      "id": "node-chain-llm-redes",
+      "name": "Basic LLM Chain (Generar Copys Redes)",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        1420,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $json.text || \"\";\nconst ep = $node[\"Tomar Primer Episodio Aprobado\"].json;\n\nconst epNumMatch = (ep[\"ID Episodio\"] || \"\").match(/\\d+/);\nconst epNum = epNumMatch ? epNumMatch[0] : \"4\";\n\nlet linkedinPost = \"\";\nlet linkedinComment = \"\";\nlet tweetText = \"\";\n\nif (raw.includes(\"[LINKEDIN_POST]\") && raw.includes(\"[LINKEDIN_COMMENT]\")) {\n  const p1 = raw.split(\"[LINKEDIN_POST]\")[1].split(\"[LINKEDIN_COMMENT]\");\n  linkedinPost = (p1[0] || \"\").trim();\n  if (p1[1].includes(\"[TWEET_X]\")) {\n    const p2 = p1[1].split(\"[TWEET_X]\");\n    linkedinComment = (p2[0] || \"\").trim();\n    tweetText = (p2[1] || \"\").trim();\n  } else {\n    linkedinComment = (p1[1] || \"\").trim();\n  }\n} else {\n  linkedinPost = raw.trim();\n  linkedinComment = \"🎧 Escúchalo en Spotify, Apple Podcasts, iVoox y web oficial: https://mgjosea.github.io/ia-sin-filtro-podcast/\";\n}\n\nif (!tweetText) {\n  tweetText = `🎙️ ¡Nuevo episodio de #IASinFiltro!\\n\\n${ep[\"ID Episodio\"]}: \\\"${ep[\"Título del Episodio\"]}\\\"\\n\\n¿Por qué la IA de hoy no es como te la contaron? Descúbrelo en 5 min:\\n👉 https://mgjosea.github.io/ia-sin-filtro-podcast/`;\n}\n\nconst videoUrl = `https://ia-sin-filtro.duckdns.org/episodes/shorts_ep${epNum}_youtube.mp4`;\nconst videoTitle = `${ep[\"Título del Episodio\"]} | ${ep[\"ID Episodio\"]} #Shorts #IASinFiltro`;\nconst videoDescription = `🎙️ ${ep[\"ID Episodio\"]}: \\\"${ep[\"Título del Episodio\"]}\\\"\\n\\n${ep[\"Concepto Clave a Explicar\"] || \"\"}\\n\\n🎧 Escucha el episodio completo en Spotify, Apple Podcasts, iVoox y web oficial:\\n👉 https://mgjosea.github.io/ia-sin-filtro-podcast/\\n\\n#IASinFiltro #InteligenciaArtificial #IA #Shorts #JoseIA`;\n\nreturn [{\n  json: {\n    action: \"publish_all_social\",\n    episodeId: ep[\"ID Episodio\"],\n    season: ep[\"Temporada\"] || \"Temporada 1\",\n    title: ep[\"Título del Episodio\"],\n    concept: ep[\"Concepto Clave a Explicar\"],\n    \n    // LinkedIn fields (all variants for Make)\n    content: linkedinPost,\n    postText: linkedinPost,\n    text: linkedinPost,\n    commentText: linkedinComment,\n    comment: linkedinComment,\n    firstComment: linkedinComment,\n    imageUrl: \"https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg\",\n    linkedinPost: linkedinPost,\n    \n    // X (Twitter) fields (all variants for Make)\n    tweetText: tweetText,\n    tweet: tweetText,\n    twitterText: tweetText,\n    \n    // YouTube Short fields (for Make YouTube module)\n    videoUrl: videoUrl,\n    videoTitle: videoTitle,\n    videoDescription: videoDescription,\n    tags: [\"IA\", \"Inteligencia Artificial\", \"IA Sin Filtro\", \"Shorts\", \"Jose IA\", \"Tecnologia\"],\n    privacyStatus: \"public\",\n    \n    webUrl: \"https://mgjosea.github.io/ia-sin-filtro-podcast/\",\n    feedUrl: \"https://mgjosea.github.io/ia-sin-filtro-podcast/feed.xml\"\n  }\n}];"
+      },
+      "id": "node-procesar-payload-make",
+      "name": "Procesar Payload para Make.com",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1648,
-        288
+        1660,
+        260
       ]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://host.docker.internal:5688/linkedin",
+        "url": "https://hook.eu1.make.com/ohqfjivgkw9mjeh7kjjyo1qhy1lmhpki",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"content\": {{ JSON.stringify(.linkedinPost) }},\n  \"postText\": {{ JSON.stringify(.linkedinPost) }},\n  \"text\": {{ JSON.stringify(.linkedinPost) }},\n  \"commentText\": {{ JSON.stringify(.linkedinComment) }},\n  \"comment\": {{ JSON.stringify(.linkedinComment) }},\n  \"firstComment\": {{ JSON.stringify(.linkedinComment) }},\n  \"imageUrl\": \"https://mgjosea.github.io/ia-sin-filtro-podcast/cover.jpg\",\n  \"episodeId\": {{ JSON.stringify([\"Tomar Primer Episodio Aprobado\"].json[\"ID Episodio\"]) }},\n  \"episodeTitle\": {{ JSON.stringify([\"Tomar Primer Episodio Aprobado\"].json[\"Título del Episodio\"]) }},\n  \"webhookUrl\": \"https://hook.eu1.make.com/ohqfjivgkw9mjeh7kjjyo1qhy1lmhpki\"\n}",
+        "jsonBody": "={{ JSON.stringify($json) }}",
         "options": {
-          "timeout": 30000
+          "timeout": 60000
         }
       },
-      "id": "node-make-publicar-linkedin",
-      "name": "Publicar en LinkedIn (Automático)",
+      "id": "node-make-difusion-rrss",
+      "name": "Make.com (Difusión: YouTube, LinkedIn, X)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1872,
-        384
+        1920,
+        160
       ],
       "continueOnFail": true
     },
@@ -255,8 +253,8 @@
       "type": "n8n-nodes-base.emailSend",
       "typeVersion": 2.1,
       "position": [
-        1872,
-        192
+        1920,
+        360
       ],
       "webhookId": "58f6f01a-25bd-4d67-be9f-388c1e7bd360",
       "credentials": {
@@ -266,22 +264,6 @@
         }
       },
       "continueOnFail": true
-    },
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "ia-sin-filtro-fase4-publish",
-        "options": {}
-      },
-      "id": "node-webhook-fase4-publish",
-      "name": "Webhook (Aprobación y Disparo Fase 4)",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        176,
-        480
-      ],
-      "webhookId": "ia-sin-filtro-fase4-publish"
     }
   ],
   "connections": {
@@ -355,12 +337,7 @@
       "main": [
         [
           {
-            "node": "YouTube (Publicar Short y Vídeo 1080p)",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Basic LLM Chain (Generar Post LinkedIn)",
+            "node": "Basic LLM Chain (Generar Copys Redes)",
             "type": "main",
             "index": 0
           }
@@ -371,29 +348,29 @@
       "ai_languageModel": [
         [
           {
-            "node": "Basic LLM Chain (Generar Post LinkedIn)",
+            "node": "Basic LLM Chain (Generar Copys Redes)",
             "type": "ai_languageModel",
             "index": 0
           }
         ]
       ]
     },
-    "Basic LLM Chain (Generar Post LinkedIn)": {
+    "Basic LLM Chain (Generar Copys Redes)": {
       "main": [
         [
           {
-            "node": "Procesar Post y Comentario LinkedIn",
+            "node": "Procesar Payload para Make.com",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Procesar Post y Comentario LinkedIn": {
+    "Procesar Payload para Make.com": {
       "main": [
         [
           {
-            "node": "Publicar en LinkedIn (Automático)",
+            "node": "Make.com (Difusión: YouTube, LinkedIn, X)",
             "type": "main",
             "index": 0
           },
